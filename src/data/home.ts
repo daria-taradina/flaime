@@ -1,0 +1,63 @@
+import { CLOUD_NAME, cloudinaryUrl } from '@/utils/constants';
+
+/**
+ * Home page content — all copy, media refs, and structured data.
+ */
+
+// ── Hero ────────────────────────────────────────────────────
+export const HERO = {
+  videoPublicId: 'hf_20260611_231757_26018a0c-efd2-4af3-a5a5-1c4fe405b2dd_efvzeg',
+  posterPublicId: 'hf_20260611_231223_d542720e-9929-4e9e-985b-b20205b0fcd6_abxyer',
+  overlayOpacity: 0.45,
+  headline: 'Transforming\nbrands into visual\nexperiences.',
+  description:
+    'We shape how your brand is seen and perceived, helping people understand its value, connect with its story, and choose it with confidence.',
+  cta: { label: "Let's Connect ↗", to: '/contact' },
+};
+
+// ── Intro ───────────────────────────────────────────────────
+export const INTRO = {
+  text: 'Flaime Studio is a creative agency helping product-based brands communicate their value through design and creative direction. Every project is built on a deep understanding of the brand, allowing us to create solutions that address specific business challenges.',
+  cta: { label: 'See More Work', to: '/work' },
+  cards: [
+    { id: 1, title: 'Loam Blends', subtitle: 'Social Media Experience', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228734/F-3_uunmgt.jpg' },
+    { id: 2, title: 'Milave Haircare', subtitle: 'Social Media & Website Experience' },
+    { id: 3, title: 'JLux Label', subtitle: 'Fashion AI Photography' },
+  ],
+};
+
+// ── Gallery (Selected Works slider) ─────────────────────────
+export const GALLERY_ITEMS = [
+  { id: 1, type: 'video', src: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1781227448/hf_20260611_231757_26018a0c-efd2-4af3-a5a5-1c4fe405b2dd_efvzeg.mp4` },
+  { id: 2, type: 'image', bg: cloudinaryUrl('image', '4f_feyshi', 'q_auto/f_auto') },
+  { id: 3, type: 'image', bg: cloudinaryUrl('image', 'd-9_jrekkm', 'q_auto/f_auto') },
+  { id: 4, type: 'image', bg: cloudinaryUrl('image', 'F-3_uunmgt', 'q_auto/f_auto') },
+  { id: 5, type: 'image', bg: cloudinaryUrl('image', 'd-10_geiek8', 'q_auto/f_auto') },
+  { id: 6, type: 'image', bg: cloudinaryUrl('image', 'a06b97ea_nano_2K_xy3svv', 'q_auto/f_auto') },
+  { id: 7, type: 'image', bg: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx', 'q_auto/f_auto') },
+];
+
+export const WORKS_BLURB =
+  "We're not here to follow trends—we're here to build something timeless. " +
+  "With a blend of creativity, strategy, and heart, we help ideas come to life. " +
+  "Every project we take on is an opportunity to learn, grow, and do something meaningful. " +
+  "We treat our clients like partners and our work like craft.";
+
+// ── Process ─────────────────────────────────────────────────
+export const PROCESS = {
+  tagline: 'Turning creative ideas into\nmemorable brand experiences.',
+  steps: [
+    { title: 'Define Your Goals', body: "We start with a short creative briefing to understand your product, brand philosophy, visual goals, tone of voice, and aesthetic direction. We look at your existing content, your competitors, and your ideal positioning. This helps us build a clear, brand-aligned direction." },
+    { title: 'Concept Creation', body: 'Based on your goals and brand identity, we develop concepts that match the business goals and brand story you want to communicate. You’ll receive several creative directions showing how your product could look across platforms — all aligned with your brand personality.' },
+    { title: 'Review & Refine', body: 'If you want any adjustments, this is the step where we make revisions. Your feedback helps shape the final outcome through focused refinements until every detail feels right.' },
+    { title: 'Work Delivered', body: 'You receive polished, consistent files in ready-to-use formats for ads, social media, websites, and product pages. Every file is optimized to support your brand identity and help you present your products with confidence.' },
+  ],
+};
+
+// ── CTA (reused on Work page too) ───────────────────────────
+export const CTA = {
+  image: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx'),
+  headline: 'Have a Project\nin Mind?\nGet in Touch!',
+  body: "Tell us about your brand and what you're looking to achieve. We'll come back with a direction that fits.",
+  button: { label: "Let's Connect ↗", to: '/contact' },
+};
