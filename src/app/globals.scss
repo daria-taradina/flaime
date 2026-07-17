@@ -1,0 +1,114 @@
+@use "./functions" as *;
+
+/* ──────────────────────────────────────────────────────────
+   FONTS
+   Swap for next/font later (self-hosted, no render-blocking
+   request). Fine as @import for now while heads-down on layout.
+   ────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+:root {
+  /* ── COLOR ── */
+  --clr-bg-dark:  #0D0D0D;
+  --clr-bg-light: #D9D4D0;
+  --clr-white:    #FFFFFF;
+  --clr-accent:   #C9B99A;
+  --clr-muted:    #6B6B6B;
+  --clr-border:   rgba(255,255,255,0.1);
+
+  /* ── TYPEFACES ── */
+  --ff-ui:      'DM Sans', system-ui, sans-serif;
+  --ff-body:    'Inter', system-ui, sans-serif;
+
+   /* ── FLUID TYPE SCALE ──────────────────────────────────
+     clamped(min-px @ 440, max-px @ 1728)  */
+  --fs-h1:  #{clamped(48px, 106px)};
+  --fs-h2:  #{clamped(36px, 90px)};
+  --fs-h3:  #{clamped(24px, 48px)};   /* flagged */
+  --fs-p:   #{clamped(20px, 32px)};
+  --fs-p2:  #{clamped(15px, 24px)};
+  
+  /* Letter-height */
+  --lh-global: 1;
+  --lh-p:   #{clamped(22px, 38px)};
+  --lh-p2:  #{clamped(21px, 30px)};
+ 
+  /* Letter-spacing */
+  --ls-5: -0.05em;
+  --ls-8: -0.08em;
+
+  /* Font-weight */
+  --fw-4: 400;
+
+  /* ── FLUID SPACING SCALE ── same function, spacing values */
+  --space-xs:  #{clamped(8px, 10px)};    /* TODO */
+  --space-sm:  #{clamped(16px, 20px)};   /* TODO */
+  --space-md:  #{clamped(24px, 40px)};   /* TODO */
+  --space-lg:  #{clamped(40px, 64px)};   /* TODO */
+  --space-xl:  #{clamped(64px, 96px)};   /* TODO */
+  --space-2xl: #{clamped(96px, 144px)};  /* TODO */
+
+  /* ── SECTION PADDING ── */
+  --pad-x: #{clamped(24px, 60px)}; 
+  --pad-y: #{clamped(70px, 127px)};
+  --pad-y-135: #{clamped(56px, 135px)};
+
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+
+/* ── RESET ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-4);
+  letter-spacing: var(--ls-8);
+  background: var(--clr-bg-dark);
+  color: var(--clr-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+/* Browsers bold h1–h6 by default via their own stylesheet —
+   without this, font-weight: 400 on body won't reach real
+   heading tags no matter what you set upstream. */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  line-height: var(--lh-global);
+}
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul, ol { list-style: none; }
+ 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+ 
+/* ── Type utility classes — composed into module files ──────────────── */
+.h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: var(--ls-5); /* differs from body default */
+}
+.h2 {
+  font-size: var(--fs-h2);
+}
+.h3 {
+  font-size: var(--fs-h3);
+}
+.p {
+  font-size: var(--fs-p);
+  line-height: var(--lh-p);
+}
+.p2 {
+  font-size: var(--fs-p2);
+  line-height: var(--lh-p2);
+  letter-spacing: var(--ls-5); /* differs from body default */
+}

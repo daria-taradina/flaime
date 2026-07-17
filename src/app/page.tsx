@@ -1,5 +1,13 @@
-import styles from './page.module.css';
+import Hero from '@/sections/home/Hero';
 
 export default function Home() {
-  return <h1 className={styles.heading}>Flaime</h1>;
+  return (
+    <main>
+      <Hero />
+      {/* <Intro /> */}
+      {/* <Services /> */}
+      {/* <SelectedWorks /> */}
+      {/* <Cta /> */}
+    </main>
+  );
 }

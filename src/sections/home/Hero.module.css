@@ -1,0 +1,124 @@
+/* ── HERO-LOCAL TOKENS ─────────────────────────────────────
+   Component-specific, not global — scoped here rather than in
+   globals.scss since nothing else uses them. Every value below
+   is a placeholder; pull real numbers from your new Figma frames
+   the same way we did pad-x/pad-y (measure @440, measure @1728,
+   run through clamped() if this file becomes .module.scss). */
+.hero {
+  --hero-col-gap: 2rem;              /* TODO */
+  --hero-right-inset: var(--pad-y-135);  /* TODO — confirm this differs from pad-x, or matches it */
+  --hero-stack-gap: var(--space-sm); /* TODO */
+  --hero-right-width: 28rem;         /* TODO */
+  --hero-mobile-stack-gap: var(--space-lg); /* TODO */
+  --hero-inset-left: var(--pad-x);   /* TODO */
+  --hero-mobile-scroll-bottom: var(--space-lg); /* TODO */
+
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg, #1a1209 0%, #0d0d0d 50%, #141a10 100%);
+}
+.heroBgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  pointer-events: none;
+}
+.heroBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, calc(var(--overlay-opacity, 0.45) * 0.6)) 0%,
+    rgba(0, 0, 0, var(--overlay-opacity, 0.45)) 50%,
+    rgba(0, 0, 0, calc(var(--overlay-opacity, 0.45) * 1.4)) 100%
+  );
+}
+.heroContent {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr var(--hero-right-width);
+  column-gap: var(--hero-col-gap);
+  align-items: stretch;
+  padding-top: 8rem;
+  width: 100%;
+  padding-left: var(--pad-x);
+  padding-right: var(--hero-right-inset);
+  padding-bottom: var(--pad-y);
+}
+.heroHeadline {
+  composes: h1 from global;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+.headlineLine {
+  white-space: nowrap;
+}
+.heroRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+.heroDesc {
+  composes: p2 from global;
+  color: color-mix(in srgb, var(--clr-white) 80%, transparent);
+  padding-top: 2.125rem;
+}
+.scrollIndicator {
+  composes: p2 from global;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.scrollArrow {
+  font-size: var(--fs-h3); /* was --fs-label — that token doesn't exist yet, swap if you add one */
+  color: var(--clr-white);
+  font-weight: 100;
+  line-height: 1;
+}
+
+/* ── RESPONSIVE ──
+   headline+description stay one unit, re-anchored center instead of
+   bottom; scroll indicator breaks out and pins to .hero's own bottom
+   edge independently — see the explanation above for why. */
+@media (max-width: 768px) {
+  .hero {
+    align-items: stretch;
+    padding-bottom: 0;
+    
+  }
+  .heroContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;   /* headline takes its content height, heroRight takes the rest */
+    
+  }
+  .heroHeadline {
+    max-width: 100%;
+  }
+  .heroRight {
+    width: 100%;
+  }
+  .heroBgVideo {
+    object-position: 70% top;
+  }
+}

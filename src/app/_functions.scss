@@ -1,0 +1,45 @@
+// ──────────────────────────────────────────────────────────
+// FLUID CLAMP GENERATOR
+// Reproduces Utopia's math as a reusable Sass function, scoped
+// to Flaime's two Figma reference frames: 800px and 1728px.
+//
+// Usage in globals.scss:
+//   --fs-h1: #{clamped(32px, 64px)};
+//   → generates the full clamp() expression, computed at build
+//     time — no manual calculator round-trip, no copy-paste.
+//
+// Override the reference frames per-call if a specific token
+// ever needs different breakpoints:
+//   --fs-hero-special: #{clamped(40px, 96px, 375px, 1728px)};
+// ──────────────────────────────────────────────────────────
+
+@use "sass:math";
+
+$default-min-bp: 440px;
+$default-max-bp: 1728px;
+
+@function to-rems($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+// Rounds to N decimal places — without this, slope/intercept
+// math produces long floating-point values in the output CSS.
+@function rnd($number, $places: 2) {
+  $n: 1;
+  @if $places > 0 {
+    @for $i from 1 through $places {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}
+
+@function clamped($min-px, $max-px, $min-bp: $default-min-bp, $max-bp: $default-max-bp) {
+  $slope: math.div($max-px - $min-px, $max-bp - $min-bp);
+  $slope-vw: rnd($slope * 100, 2);
+  $intercept-rems: rnd(to-rems($min-px - $slope * $min-bp), 4);
+  $min-rems: rnd(to-rems($min-px), 4);
+  $max-rems: rnd(to-rems($max-px), 4);
+
+  @return clamp(#{$min-rems}, #{$slope-vw}vw + #{$intercept-rems}, #{$max-rems});
+}

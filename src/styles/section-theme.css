@@ -1,0 +1,58 @@
+/*
+  SECTION SYSTEM
+  ─────────────────────────────────────────────────────────
+  Imported in layout.tsx AFTER globals.scss, since it reads
+  --clr-* and --pad-x / --pad-y from there.
+
+  Three independent knobs, each driven by a data attribute
+  set in Section.tsx:
+  - data-theme="dark" | "light"   → background + text colors
+  - data-pad-y="true" | "false"   → top/bottom padding on/off
+  - .container (a plain class)    → left/right padding, always on
+                                     unless container={false} skips
+                                     rendering it entirely
+*/
+
+/* ── COLOR THEME ─────────────────────────────────────────── */
+.section {
+  position: relative;
+  background: var(--section-bg);
+  color: var(--section-fg);
+  /*margin-inline: auto;*/
+}
+.section[data-theme='dark'] {
+  --section-bg: var(--clr-bg-dark);
+  --section-fg: var(--clr-white);
+  --section-muted: rgba(255, 255, 255, 0.55);
+  --section-border: var(--clr-border);
+  --section-card-bg: rgba(255, 255, 255, 0.03);
+}
+.section[data-theme='light'] {
+  --section-bg: var(--clr-bg-light);
+  --section-fg: var(--clr-bg-dark);
+  --section-muted: var(--clr-muted);
+  --section-border: rgba(13, 13, 13, 0.12);
+  --section-card-bg: rgba(13, 13, 13, 0.03);
+}
+/* section-label reads its color from whichever theme is active */
+.section-label {
+  color: var(--section-muted, var(--clr-muted));
+}
+
+/* ── VERTICAL PADDING ────────────────────────────────────── */
+/* On by default. A section that manages its own top/bottom
+   spacing (e.g. Hero, full-bleed galleries) passes padY={false}
+   to opt out. */
+.section[data-pad-y='true'] {
+  padding-block: var(--pad-y);
+}
+
+/* ── HORIZONTAL PADDING ──────────────────────────────────── */
+/* .container is the inner wrapper Section renders when
+   container={true} (the default). It's what every normal
+   section's content sits inside; full-bleed sections skip it
+   via container={false}. */
+.container {
+  width: 100%;
+  padding-inline: var(--pad-x);
+}
