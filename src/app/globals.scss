@@ -55,6 +55,10 @@
   --pad-y: #{clamped(70px, 127px)};
   --pad-y-135: #{clamped(56px, 135px)};
 
+  /* ── TYPEFACES ── */
+  --p2-w: #{clamped(360px, 402px)};
+  --h1-w: #{clamped(360px, 840px)};
+
   --radius-sm: 4px;
   --radius-md: 10px;
   --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);

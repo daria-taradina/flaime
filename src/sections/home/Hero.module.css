@@ -5,10 +5,10 @@
    the same way we did pad-x/pad-y (measure @440, measure @1728,
    run through clamped() if this file becomes .module.scss). */
 .hero {
-  --hero-col-gap: 2rem;              /* TODO */
+  --hero-col-gap: 10%;              /* TODO */
   --hero-right-inset: var(--pad-y-135);  /* TODO — confirm this differs from pad-x, or matches it */
-  --hero-stack-gap: var(--space-sm); /* TODO */
-  --hero-right-width: 28rem;         /* TODO */
+  /*--hero-stack-gap: var(--space-sm); /* TODO */
+  --hero-right-width: var(--p2-w);
   --hero-mobile-stack-gap: var(--space-lg); /* TODO */
   --hero-inset-left: var(--pad-x);   /* TODO */
   --hero-mobile-scroll-bottom: var(--space-lg); /* TODO */
@@ -50,7 +50,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr var(--hero-right-width);
+  grid-template-columns: 1fr var(--hero-right-width);  
   column-gap: var(--hero-col-gap);
   align-items: stretch;
   padding-top: 8rem;
@@ -61,14 +61,14 @@
 }
 .heroHeadline {
   composes: h1 from global;
-  width: 100%;
+  width: 100%;  
   display: flex;
   flex-direction: column;
   align-self: flex-end;
 }
-.headlineLine {
+/*.headlineLine {
   white-space: nowrap;
-}
+}*/
 .heroRight {
   display: flex;
   flex-direction: column;
@@ -80,6 +80,7 @@
   composes: p2 from global;
   color: color-mix(in srgb, var(--clr-white) 80%, transparent);
   padding-top: 2.125rem;
+  
 }
 .scrollIndicator {
   composes: p2 from global;
