@@ -50,7 +50,7 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr var(--hero-right-width);
   column-gap: var(--hero-col-gap);
   align-items: stretch;
   padding-top: 8rem;
@@ -74,7 +74,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  max-width: var(--hero-right-width);
+  
 }
 .heroDesc {
   composes: p2 from global;
@@ -105,29 +105,18 @@
   .hero {
     align-items: stretch;
     padding-bottom: 0;
+    
   }
   .heroContent {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;   /* headline takes its content height, heroRight takes the rest */
     
-    align-content: center;
   }
   .heroHeadline {
     max-width: 100%;
   }
   .heroRight {
-    align-items: flex-start;
-    text-align: left;
     width: 100%;
-    max-width: 480px;
-    margin-left: 0;
-    margin-top: 0;
-    gap: 0;
-  }
-  .scrollIndicator {
-    position: absolute;
-    left: var(--hero-inset-left);
-    right: var(--hero-inset-left);
-    bottom: var(--hero-mobile-scroll-bottom);
   }
   .heroBgVideo {
     object-position: 70% top;
