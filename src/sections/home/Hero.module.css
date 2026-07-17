@@ -6,7 +6,7 @@
    run through clamped() if this file becomes .module.scss). */
 .hero {
   --hero-col-gap: 2rem;              /* TODO */
-  --hero-right-inset: var(--pad-x);  /* TODO — confirm this differs from pad-x, or matches it */
+  --hero-right-inset: var(--pad-y-135);  /* TODO — confirm this differs from pad-x, or matches it */
   --hero-stack-gap: var(--space-sm); /* TODO */
   --hero-right-width: 28rem;         /* TODO */
   --hero-mobile-stack-gap: var(--space-lg); /* TODO */
@@ -52,11 +52,11 @@
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: var(--hero-col-gap);
-  align-items: flex-end;
+  align-items: stretch;
   padding-top: 8rem;
   width: 100%;
   padding-left: var(--pad-x);
-  padding-right: var(--pad-y-135);
+  padding-right: var(--hero-right-inset);
   padding-bottom: var(--pad-y);
 }
 .heroHeadline {
@@ -64,6 +64,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
 }
 .headlineLine {
   white-space: nowrap;
@@ -71,13 +72,14 @@
 .heroRight {
   display: flex;
   flex-direction: column;
-  gap: var(--hero-stack-gap);
+  justify-content: space-between;
   width: 100%;
   max-width: var(--hero-right-width);
 }
 .heroDesc {
   composes: p2 from global;
   color: color-mix(in srgb, var(--clr-white) 80%, transparent);
+  padding-top: 2.125rem;
 }
 .scrollIndicator {
   composes: p2 from global;
@@ -86,7 +88,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-sm);
+  width: 100%;
 }
 .scrollArrow {
   font-size: var(--fs-h3); /* was --fs-label — that token doesn't exist yet, swap if you add one */
@@ -106,7 +108,7 @@
   }
   .heroContent {
     grid-template-columns: 1fr;
-    gap: var(--hero-mobile-stack-gap);
+    
     align-content: center;
   }
   .heroHeadline {
