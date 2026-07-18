@@ -7,6 +7,13 @@
   display: flex;
   flex-direction: column;
   width: 100%; /* was var(--card-sqr) — fixed width fighting the 1fr track, caused overflow/misalignment */
+  transition: transform var(--transition);
+}
+@media (hover: hover) {
+  .card:hover {
+    transform: scale(1.02);
+    z-index: 1; /* lifts above neighboring cards so the scale isn't clipped by the grid gap */
+  }
 }
 .thumb {
   position: relative; /* required anchor for next/image `fill` — missing this let the image escape the box entirely */
