@@ -54,4 +54,8 @@
   .serviceItem.isNear .serviceTitle {
     font-size: calc(var(--fs-h2) * 1.05);
   }
+
+  .serviceTitle {
+    line-height: 1.6;
+  }
 }

@@ -41,11 +41,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 7, type: 'image', bg: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx', 'q_auto/f_auto') },
 ];
 
-export const WORKS_BLURB =
+export const SERVICES_BLURB =
   "We're not here to follow trends—we're here to build something timeless. " +
   "With a blend of creativity, strategy, and heart, we help ideas come to life. " +
   "Every project we take on is an opportunity to learn, grow, and do something meaningful. " +
-  "We treat our clients like partners and our work like craft.";
+  "We treat our clients like partners and our work like craft. ";
 
 // ── Process ─────────────────────────────────────────────────
 export const PROCESS = {

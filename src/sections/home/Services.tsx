@@ -6,6 +6,7 @@ import Section from '@/components/layout/Section';
 import { SERVICES } from '@/data/services';
 import { MOBILE_QUERY } from '@/utils/constants';
 import styles from './Services.module.css';
+import { SERVICES_BLURB } from '@/data/home';
 
 export default function Services() {
   const [active, setActive] = useState<number | null>(null);
@@ -39,11 +40,7 @@ export default function Services() {
   return (
     <Section theme="dark" className={styles.services}>
       <FadeIn className={styles.servicesText}>
-        <p>
-          We create complete visual systems where every element works together
-          to support the same brand experience. From branding identity to
-          social media content, every piece is designed to fit into the bigger picture.
-        </p>
+        <p>{SERVICES_BLURB}</p>
       </FadeIn>
       <div className={styles.servicesInner}>
         <FadeIn className={styles.servicesLabelCol}>
