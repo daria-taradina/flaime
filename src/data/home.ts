@@ -59,9 +59,18 @@ export const PROCESS = {
 };
 
 // ── CTA (reused on Work page too) ───────────────────────────
-export const CTA = {
-  image: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx'),
-  headline: 'Have a Project\nin Mind?\nGet in Touch!',
-  body: "Tell us about your brand and what you're looking to achieve. We'll come back with a direction that fits.",
+interface CTAData {
+  image: string;
+  video?: { publicId: string; posterPublicId?: string }; // optional — swap image for video without touching the component
+  headline: string;
+  body: string;
+  button: { label: string; to: string };
+}
+ 
+export const CTA: CTAData = {
+  image: cloudinaryUrl('image', 'hf_20260611_231223_d542720e-9929-4e9e-985b-b20205b0fcd6_abxyer'),
+  headline: 'Have a Project in Mind?\nGet in Touch!',
+  body: "Driven by curiosity and built on purpose, this is where bold thinking meets thoughtful execution. " +
+   "Let’s create something meaningful together. ",
   button: { label: "Let's Connect ↗", to: '/contact' },
 };
