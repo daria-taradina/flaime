@@ -1,4 +1,5 @@
 import { CLOUD_NAME, cloudinaryUrl } from '@/utils/constants';
+import type { GalleryItem } from '@/components/media/DragGallery';
 
 /**
  * Home page content — all copy, media refs, and structured data.
@@ -21,13 +22,16 @@ export const INTRO = {
   cta: { label: 'See More Work', to: '/work' },
   cards: [
     { id: 1, title: 'Loam Blends', subtitle: 'Social Media Experience', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228734/F-3_uunmgt.jpg' },
-    { id: 2, title: 'Milave Haircare', subtitle: 'Social Media & Website Experience' },
-    { id: 3, title: 'JLux Label', subtitle: 'Fashion AI Photography' },
+    { id: 2, title: 'Milave Haircare', subtitle: 'Social Media & Website Experience', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228733/hf_20260403_215802_26dda678-2f90-4fe0-b5d7-39a55f0f377b_1_jgsrxl.png' },
+    { id: 3, title: 'JLux Label', subtitle: 'Fashion AI Photography', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/6db9025c_nano_2K_f9vofx.jpg'},
   ],
 };
 
 // ── Gallery (Selected Works slider) ─────────────────────────
-export const GALLERY_ITEMS = [
+// Explicitly typed as GalleryItem[] — without this, TS infers `type` as
+// plain `string` from the object literals below, which is too wide for
+// DragGallery's `'video' | 'image'` union and fails at the call site.
+export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 1, type: 'video', src: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1781227448/hf_20260611_231757_26018a0c-efd2-4af3-a5a5-1c4fe405b2dd_efvzeg.mp4` },
   { id: 2, type: 'image', bg: cloudinaryUrl('image', '4f_feyshi', 'q_auto/f_auto') },
   { id: 3, type: 'image', bg: cloudinaryUrl('image', 'd-9_jrekkm', 'q_auto/f_auto') },
@@ -37,11 +41,11 @@ export const GALLERY_ITEMS = [
   { id: 7, type: 'image', bg: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx', 'q_auto/f_auto') },
 ];
 
-export const WORKS_BLURB =
+export const SERVICES_BLURB =
   "We're not here to follow trends—we're here to build something timeless. " +
   "With a blend of creativity, strategy, and heart, we help ideas come to life. " +
   "Every project we take on is an opportunity to learn, grow, and do something meaningful. " +
-  "We treat our clients like partners and our work like craft.";
+  "We treat our clients like partners and our work like craft. ";
 
 // ── Process ─────────────────────────────────────────────────
 export const PROCESS = {
@@ -55,9 +59,18 @@ export const PROCESS = {
 };
 
 // ── CTA (reused on Work page too) ───────────────────────────
-export const CTA = {
-  image: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx'),
-  headline: 'Have a Project\nin Mind?\nGet in Touch!',
-  body: "Tell us about your brand and what you're looking to achieve. We'll come back with a direction that fits.",
+interface CTAData {
+  image: string;
+  video?: { publicId: string; posterPublicId?: string }; // optional — swap image for video without touching the component
+  headline: string;
+  body: string;
+  button: { label: string; to: string };
+}
+ 
+export const CTA: CTAData = {
+  image: cloudinaryUrl('image', 'hf_20260611_231223_d542720e-9929-4e9e-985b-b20205b0fcd6_abxyer'),
+  headline: 'Have a Project in Mind?\nGet in Touch!',
+  body: "Driven by curiosity and built on purpose, this is where bold thinking meets thoughtful execution. " +
+   "Let’s create something meaningful together. ",
   button: { label: "Let's Connect ↗", to: '/contact' },
 };

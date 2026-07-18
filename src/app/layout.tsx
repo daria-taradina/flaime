@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import '@/app/globals.scss';
 import '@/styles/section-theme.css';
-// import Navbar from '@/components/layout/Navbar';
-// import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'Flaime Studio',
@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <Navbar /> — uncomment once built */}
+        <Navbar />
         {children}
-        {/* <Footer /> — uncomment once built */}
+        <Footer />
       </body>
     </html>
   );

@@ -37,6 +37,7 @@
 /* section-label reads its color from whichever theme is active */
 .section-label {
   color: var(--section-muted, var(--clr-muted));
+  text-transform: uppercase;
 }
 
 /* ── VERTICAL PADDING ────────────────────────────────────── */

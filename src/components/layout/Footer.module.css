@@ -1,0 +1,81 @@
+.footer {
+  border-top: 1px solid var(--clr-border);
+  overflow: hidden;
+}
+
+.top {
+  padding-block: var(--pad-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--pad-y);
+}
+
+/* Fixed to one line — was wrapping because of max-width: 22ch */
+.location {
+  composes: p2 from global;
+  color: var(--clr-muted);
+  
+}
+
+.links {
+  composes: p from global;
+  text-transform: uppercase;
+  display: flex;
+  gap: var(--pad-x);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.copyright {
+  composes: p2 from global;
+  color: var(--clr-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bigLogoImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Wordmark row — width is the source of truth; font-size is set inline by JS to fit it exactly */
+.bigLogoRow {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* guards against a 1px overflow flash before the fit effect runs */
+}
+
+.bigLogo {
+  display: block;
+  width: 100%;
+  font-family: var(--ff-ui);
+  font-weight: 200;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--clr-white);
+  white-space: nowrap;
+}
+
+.bigLogo em {
+  font-style: italic;
+  color: var(--clr-accent);
+}
+
+/* © mark — pinned to the same 60px edge as everything else, positioned independently
+   of the logo so it never eats into the logo's fit-to-width measurement */
+
+@media (max-width: 768px) {
+  .top { flex-direction: column;  gap: var(--space-xs);}
+  /* DOM order is location → links → copyright (needed for desktop's
+     space-between row: location left, links middle, copyright right).
+     Reorder visually for the mobile stack instead of touching the JSX. */
+  .location { order: 1; }
+  .copyright { order: 2; align-self: flex-start; }
+  .links { order: 3; gap: var(--space-lg); padding-block: var(--space-lg);}
+}

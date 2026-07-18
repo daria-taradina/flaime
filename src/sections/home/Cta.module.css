@@ -1,0 +1,72 @@
+/* ── CTA ───────────────────────────────────────────────────── */
+.cta {
+  position: relative;
+  max-height: 80vh;
+  /*min-height: 70svh;   /* static viewport height — vh alone recalculates as mobile browser chrome
+                          hides/shows on scroll, which made the cover-fit background visibly
+                          rescale ("zoom"). Same fix as Hero's 100svh. TODO: measure real ratio. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.bgMedia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* explicit — crop stays centered/symmetric left-right as width narrows */
+  display: block;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+ background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, calc(var(--overlay-opacity, 0.45) * 0.6)) 0%,
+    rgba(0, 0, 0, var(--overlay-opacity, 0.45)) 50%,
+    rgba(0, 0, 0, calc(var(--overlay-opacity, 0.45) * 1.4)) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  width: 100%;
+  padding: var(--pad-y) var(--pad-x);
+}
+
+.headline {
+  composes: h2 from global;
+  color: var(--section-fg);
+  display: flex;
+  flex-direction: column;
+}
+.headlineLine {
+  white-space: nowrap;
+}
+
+.body {
+  composes: p2 from global;
+  color: color-mix(in srgb, var(--section-fg) 80%, transparent);
+  max-width: 37ch;
+  padding-bottom: var(--pad-y);
+}
+
+.buttonWrap {
+  width: 100%;             /* real containing block for Button's mobile width:100% —
+                               without this, the percentage had nothing to resolve against
+                               inside .content's shrink-to-fit flex item */
+  display: flex;
+  justify-content: center; /* keeps the button centered at desktop where it stays fit-content */
+}

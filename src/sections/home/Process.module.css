@@ -1,0 +1,77 @@
+/* ── PROCESS ───────────────────────────────────────────────── */
+.process {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.processList {
+  width: 100%;
+  padding-right: var(--pad-x);
+}
+
+.processRow {
+  border-top: 1px solid var(--section-fg);
+  border-bottom: 1px solid var(--section-fg);
+}
+
+.processHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-md);
+}
+
+.stepTitle {
+  composes: h3 from global;
+  color: var(--section-fg);
+  text-transform: uppercase;
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+  color: var(--section-fg);
+  font-size: var(--fs-h3);
+  font-weight: 200;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.processBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--transition);
+}
+
+.processBody[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+
+.stepBodyInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.stepBody {
+  composes: p2 from global;
+  padding-top: var(--space-sm);    /* gap: header bottom → paragraph start */
+  padding-bottom: var(--space-md); /* gap: paragraph end → row's bottom border */
+  padding-right: var(--pad-x);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .process {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-lg);
+  }
+  .processList {
+    padding-right: 0; /* was a desktop-only inset for the right column of a 1fr 1fr grid — full width now */
+  }
+  
+}

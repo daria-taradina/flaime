@@ -29,6 +29,7 @@
   --fs-h3:  #{clamped(24px, 48px)};   /* flagged */
   --fs-p:   #{clamped(20px, 32px)};
   --fs-p2:  #{clamped(15px, 24px)};
+  --fs-big-btn: #{clamped(20px, 26px)};
   
   /* Letter-height */
   --lh-global: 1;
@@ -55,6 +56,17 @@
   --pad-y: #{clamped(70px, 127px)};
   --pad-y-135: #{clamped(56px, 135px)};
 
+  /* ── Width ── */
+  --p2-w: #{clamped(360px, 402px)};
+  --h1-w: #{clamped(360px, 840px)};
+  --card-sqr: #{clamped(389px, 524px)};
+  --card-rec: #{clamped(181px, 375px)};
+
+  /* ── GAP ── */
+  --gap-13: #{clamped(6px, 13px)};
+  --gap-20: #{clamped(360px, 402px)};
+  --gap-100: #{clamped(70px, 102px)};
+
   --radius-sm: 4px;
   --radius-md: 10px;
   --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -66,6 +78,7 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--ff-body);
+  font-size: var(--fs-p);
   font-weight: var(--fw-4);
   letter-spacing: var(--ls-8);
   background: var(--clr-bg-dark);
@@ -99,6 +112,7 @@ ul, ol { list-style: none; }
 }
 .h2 {
   font-size: var(--fs-h2);
+  line-height: 1.3;
 }
 .h3 {
   font-size: var(--fs-h3);
@@ -111,4 +125,7 @@ ul, ol { list-style: none; }
   font-size: var(--fs-p2);
   line-height: var(--lh-p2);
   letter-spacing: var(--ls-5); /* differs from body default */
+}
+.btn1 {
+  font-size: var(--fs-big-btn);
 }

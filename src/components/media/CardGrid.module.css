@@ -1,0 +1,45 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* was var(--card-sqr) — fixed width fighting the 1fr track, caused overflow/misalignment */
+}
+.thumb {
+  position: relative; /* required anchor for next/image `fill` — missing this let the image escape the box entirely */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--section-card-bg);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  composes: h3 from global;
+  color: var(--section-fg);
+}
+.subtitle {
+  composes: p2 from global;
+  color: var(--section-fg);
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .thumb {
+    aspect-ratio: 3 / 2;
+  }
+}
