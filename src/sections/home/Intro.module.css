@@ -1,0 +1,50 @@
+/* ── INTRO ─────────────────────────────────────────────────── */
+.intro {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-100); /* was var(--pad-y) — borrowed outer-inset token, now its own scale value */
+}
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between; /* was a hardcoded 423px gap — now derives from leftover width instead */
+  width: 100%;
+}
+.text {
+  composes: p from global;
+  max-width: 40ch;
+  flex: 0 1 auto;
+}
+.cta {
+  flex-shrink: 0;
+  padding-top: 0.25em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "cards"
+      "cta";
+    row-gap: var(--space-md);
+  }
+  .top {
+    display: contents;
+  }
+  .text {
+    grid-area: text;
+    padding-bottom: var(--space-lg); /* was 2.8750rem — matched to nearest scale token */
+  }
+  .cards {
+    grid-area: cards;
+  }
+  .cta {
+    grid-area: cta;
+    padding-top: 0;
+  }
+}

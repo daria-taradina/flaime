@@ -1,4 +1,5 @@
 import { CLOUD_NAME, cloudinaryUrl } from '@/utils/constants';
+import type { GalleryItem } from '@/components/media/DragGallery';
 
 /**
  * Home page content — all copy, media refs, and structured data.
@@ -27,7 +28,10 @@ export const INTRO = {
 };
 
 // ── Gallery (Selected Works slider) ─────────────────────────
-export const GALLERY_ITEMS = [
+// Explicitly typed as GalleryItem[] — without this, TS infers `type` as
+// plain `string` from the object literals below, which is too wide for
+// DragGallery's `'video' | 'image'` union and fails at the call site.
+export const GALLERY_ITEMS: GalleryItem[] = [
   { id: 1, type: 'video', src: `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/v1781227448/hf_20260611_231757_26018a0c-efd2-4af3-a5a5-1c4fe405b2dd_efvzeg.mp4` },
   { id: 2, type: 'image', bg: cloudinaryUrl('image', '4f_feyshi', 'q_auto/f_auto') },
   { id: 3, type: 'image', bg: cloudinaryUrl('image', 'd-9_jrekkm', 'q_auto/f_auto') },
