@@ -7,18 +7,10 @@ import { PROCESS } from '@/data/home';
 import styles from './Process.module.css';
 
 export default function Process() {
-  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set([0])); // 0 open by default, or new Set() for all closed
+  const [openIndex, setOpenIndex] = useState<number | null>(null); // closed by default; only one open at a time
 
   const toggle = (i: number) => {
-    setOpenIndices((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) {
-        next.delete(i);
-      } else {
-        next.add(i);
-      }
-      return next;
-    });
+    setOpenIndex((prev) => (prev === i ? null : i));
   };
 
   return (
@@ -26,7 +18,7 @@ export default function Process() {
       <span className="section-label">Our Process</span>
       <div className={styles.processList}>
         {PROCESS.steps.map((step, i) => {
-          const isOpen = openIndices.has(i);
+          const isOpen = openIndex === i;
           return (
             <div key={step.title} className={styles.processRow}>
               <button
