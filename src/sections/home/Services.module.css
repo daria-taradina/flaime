@@ -57,6 +57,7 @@
 @media (hover: none) {
   .serviceItem.isNear .serviceTitle {
     font-size: calc(var(--fs-h2) * 1.05);
+    font-weight: var(--fw-5);
   }
 
   .serviceTitle {

@@ -1,27 +1,24 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLayoutEffect, useEffect, useRef, useState } from 'react';
 import { FOOTER_LINK_COLUMNS } from '@/data/navigation';
 import { CONTACT_INFO } from '@/data/contact';
 import styles from './Footer.module.css';
 
 const REFERENCE_FONT_SIZE = 200;
-
-// useLayoutEffect warns ("does nothing on the server") when it runs during
-// SSR — Next renders client components server-side too. Falls back to
-// useEffect there; the real layout-fitting logic only ever needs to run
-// client-side anyway.
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export default function Footer() {
+  const pathname = usePathname();
   const rowRef = useRef<HTMLDivElement>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
   const [fontSize, setFontSize] = useState(REFERENCE_FONT_SIZE);
   const [imgFailed, setImgFailed] = useState(false);
 
   useIsomorphicLayoutEffect(() => {
-    if (!imgFailed) return; // real SVG scales to width:100% on its own — no JS needed unless it's missing
+    if (!imgFailed) return;
     const fit = () => {
       const row = rowRef.current;
       const measure = measureRef.current;
@@ -42,6 +39,8 @@ export default function Footer() {
     };
   }, [imgFailed]);
 
+  const isLinkActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.top}`}>
@@ -52,12 +51,22 @@ export default function Footer() {
           {FOOTER_LINK_COLUMNS.map((column, i) => (
             <div key={i} className={styles.col}>
               {column.map((item) =>
-                item.external ? (
-                  <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
+                item.external ? ( <a
+                  
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.link}
+                  >
                     {item.label}
                   </a>
                 ) : (
-                  <Link key={item.label} href={item.href}>
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`${styles.link} ${isLinkActive(item.href) ? styles.linkActive : ''}`}
+                  >
                     {item.label}
                   </Link>
                 )

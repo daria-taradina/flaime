@@ -25,6 +25,13 @@
   gap: var(--pad-x);
 }
 
+.links a,
+.link {
+  color: inherit;
+  position: relative;
+  width: fit-content;
+}
+
 .col {
   display: flex;
   flex-direction: column;
@@ -78,4 +85,26 @@
   .location { order: 1; }
   .copyright { order: 2; align-self: flex-start; }
   .links { order: 3; gap: var(--space-lg); padding-block: var(--space-lg);}
+}
+
+@media (hover: hover) {
+  .link {
+    transition: color var(--transition);
+  }
+  .link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--clr-white);
+    transition: width var(--transition);
+  }
+  .link:hover {
+    color: var(--clr-white);
+  }
+  .link:hover::after {
+    width: 100%;
+  }
 }
