@@ -85,7 +85,8 @@
 .scrollIndicator {
   composes: p2 from global;
   text-transform: uppercase;
-  color: var(--clr-muted);
+  color: var(--clr-white);
+  opacity: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
