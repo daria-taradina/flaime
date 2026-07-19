@@ -6,6 +6,8 @@ import Section from '@/components/layout/Section';
 import { HERO } from '@/data/home';
 import { cloudinaryUrl } from '@/utils/constants';
 import styles from './Hero.module.css';
+import BreathingText from '@/components/ui/BreathingText';
+import FallingArrow from '@/components/ui/FallingArrow';
 
 function HeroBg() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -56,10 +58,10 @@ export default function Hero() {
           <p className={styles.heroDesc}>{HERO.description}</p>
           <div className={styles.scrollIndicator}>
             {/* was: inner span duplicated the outer div's class — fixed */}
-            <span>Scroll to Discover</span>
-            <span className={styles.scrollArrow} aria-hidden="true">
-              ↓
-            </span>
+            <BreathingText className={styles.scrollIndicator}>
+              <span>Scroll to Discover</span>
+              <span className={styles.scrollArrow} aria-hidden="true">↓</span>
+            </BreathingText>
           </div>
         </motion.div>
       </div>

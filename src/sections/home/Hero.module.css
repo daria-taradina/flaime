@@ -94,6 +94,7 @@
 .scrollArrow {
   font-size: var(--fs-h3); /* was --fs-label — that token doesn't exist yet, swap if you add one */
   color: var(--clr-white);
+  opacity: 80%;
   font-weight: 100;
   line-height: 1;
 }
