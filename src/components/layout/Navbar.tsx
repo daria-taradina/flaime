@@ -62,7 +62,7 @@ export default function Navbar() {
       document.body.style.left = '';
       document.body.style.right = '';
       document.body.style.width = '';
-      window.scrollTo(0, scrollYRef.current);
+      window.scrollTo({ top: scrollYRef.current, left: 0, behavior: 'instant' });
     }
 
     return () => {
