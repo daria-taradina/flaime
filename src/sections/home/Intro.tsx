@@ -7,7 +7,7 @@ import styles from './Intro.module.css';
 
 export default function Intro() {
   return (
-    <Section theme="light" containerClassName={styles.intro}>
+    <Section theme="light" className={styles.introSection} containerClassName={styles.intro}>
       <div className={styles.top}>
         <FadeIn className={styles.text}>
           <p>{INTRO.text}</p>

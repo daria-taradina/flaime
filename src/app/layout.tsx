@@ -3,6 +3,7 @@ import '@/app/globals.scss';
 import '@/styles/section-theme.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
 
 export const metadata: Metadata = {
   title: 'Flaime Studio',
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <Footer />
+        <SmoothScrollProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

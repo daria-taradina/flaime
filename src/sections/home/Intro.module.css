@@ -1,4 +1,8 @@
 /* ── INTRO ─────────────────────────────────────────────────── */
+.introSection {
+  position: relative;
+  z-index: 1;
+}
 .intro {
   position: relative;
   z-index: 1;
