@@ -46,7 +46,11 @@
 
 @media (hover: hover) {
   .serviceItem:hover .serviceTitle {
-    font-size: calc(var(--fs-h2) * 1.08);
+    font-size: calc(var(--fs-h2) * 1.2);
+    font-weight: var(--fw-5);
+    /*text-shadow: 2px 2px 15px var(--clr-accent);
+    text-decoration: underline solid var(--clr-accent) 0.3rem;
+    text-underline-offset: 25%;*/
   }
 }
 

@@ -41,7 +41,9 @@
   --ls-8: -0.08em;
 
   /* Font-weight */
+  --fw-2: 200;
   --fw-4: 400;
+  --fw-5: 500;
 
   /* ── FLUID SPACING SCALE ── same function, spacing values */
   --space-xs:  #{clamped(8px, 10px)};    /* TODO */
