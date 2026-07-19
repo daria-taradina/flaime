@@ -40,6 +40,9 @@
   --ls-5: -0.05em;
   --ls-8: -0.08em;
 
+  /* Word-spacing */
+  --ws-p: 0.1em;
+
   /* Font-weight */
   --fw-2: 200;
   --fw-4: 400;
@@ -122,6 +125,7 @@ ul, ol { list-style: none; }
 .p {
   font-size: var(--fs-p);
   line-height: var(--lh-p);
+  word-spacing: var(--ws-p);
 }
 .p2 {
   font-size: var(--fs-p2);

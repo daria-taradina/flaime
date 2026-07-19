@@ -5,7 +5,7 @@
 
 .servicesText {
   composes: p from global;
-  max-width: 35ch; /* same as intro p */
+  max-width: 36ch; /* same as intro p */
   padding-bottom: var(--gap-100);
 }
 
