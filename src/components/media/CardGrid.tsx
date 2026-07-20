@@ -1,12 +1,15 @@
+// components/media/CardGrid.tsx
+import Link from 'next/link';
+import { backgroundStyle } from '@/utils/media';
 import styles from './CardGrid.module.css';
-import Image from 'next/image';
 
 export interface CardGridItem {
   id: string | number;
   title: string;
   subtitle?: string;
-  src?: string;
+  bg?: string; // hex color OR a Cloudinary URL built via cloudinaryUrl()
   alt?: string;
+  slug?: string;
 }
 
 interface CardGridProps {
@@ -14,26 +17,35 @@ interface CardGridProps {
   className?: string;
 }
 
-/**
- * CardGrid — a row of image/placeholder cards with labels underneath.
- * If `src` is missing the card renders as a plain background placeholder.
- */
 export default function CardGrid({ items = [], className = '' }: CardGridProps) {
   return (
     <div className={`${styles.grid} ${className}`}>
-      {items.map((item) => (
-        <div key={item.id} className={styles.card}>
-          <div className={styles.thumb}>
-            {item.src ? (
-                <Image src={item.src} alt={item.alt || item.title} fill style={{ objectFit: 'cover' }} />
-            ) : null}
+      {items.map((item) => {
+        const content = (
+          <>
+            <div
+              className={styles.thumb}
+              style={backgroundStyle(item.bg)}
+              role="img"
+              aria-label={item.alt || item.title}
+            />
+            <div className={styles.label}>
+              <span className={styles.title}>{item.title}</span>
+              {item.subtitle && <span className={styles.subtitle}>{item.subtitle}</span>}
             </div>
-          <div className={styles.label}>
-            <span className={styles.title}>{item.title}</span>
-            {item.subtitle && <span className={styles.subtitle}>{item.subtitle}</span>}
+          </>
+        );
+
+        return item.slug ? (
+          <Link key={item.id} href={`/work/${item.slug}`} className={styles.card}>
+            {content}
+          </Link>
+        ) : (
+          <div key={item.id} className={styles.card}>
+            {content}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

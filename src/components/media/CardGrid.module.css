@@ -22,19 +22,16 @@
 }
 
 .thumb {
-  position: relative; /* required anchor for next/image `fill` — missing this let the image escape the box entirely */
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--section-card-bg);
+  background-size: cover;
+  background-position: center;
   transition: box-shadow var(--transition);
 }
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+
 .label {
   display: flex;
   flex-direction: column;

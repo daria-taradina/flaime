@@ -21,10 +21,28 @@ export const INTRO = {
   text: 'Flaime Studio is a creative agency helping product-based brands communicate their value through design and creative direction. Every project is built on a deep understanding of the brand, allowing us to create solutions that address specific business challenges.',
   cta: { label: 'See More Work', to: '/work' },
   cards: [
-    { id: 1, title: 'Loam Blends', subtitle: 'Social Media Experience', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228734/F-3_uunmgt.jpg' },
-    { id: 2, title: 'Milave Haircare', subtitle: 'Social Media & Website Experience', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228733/hf_20260403_215802_26dda678-2f90-4fe0-b5d7-39a55f0f377b_1_jgsrxl.png' },
-    { id: 3, title: 'JLux Label', subtitle: 'Fashion AI Photography', src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/6db9025c_nano_2K_f9vofx.jpg'},
-  ],
+  {
+    id: 1,
+    slug: 'loam-blends',
+    title: 'Loam Blends',
+    subtitle: 'Social Media Experience',
+    bg: cloudinaryUrl('image', 'F-3_uunmgt', 'q_auto:good/f_auto'),
+  },
+  {
+    id: 2,
+    slug: 'milave-haircare',
+    title: 'Milave Haircare',
+    subtitle: 'Social Media & Website Experience',
+    bg: cloudinaryUrl('image', 'hf_20260403_215802_26dda678-2f90-4fe0-b5d7-39a55f0f377b_1_jgsrxl', 'q_auto:good/f_auto'),
+  },
+  {
+    id: 3,
+    slug: 'jlux-label',
+    title: 'JLux Label',
+    subtitle: 'Fashion AI Photography',
+    bg: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx', 'q_auto:eco/f_auto'),
+  },
+],
 };
 
 // ── Gallery (Selected Works slider) ─────────────────────────

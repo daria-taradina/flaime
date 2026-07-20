@@ -1,0 +1,66 @@
+/* HeroParallax.module.css */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+}
+
+.frame {
+  position: relative;
+  min-height: 160vh; /* image column taller than viewport — this is what gives .sticky room to travel before releasing */
+}
+
+.image {
+  object-fit: cover;
+}
+
+.left {
+  padding-left: var(--pad-x);  /* grid row auto-stretches to match .frame's height — no JS, no manual measuring */
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 10%;
+  max-width: 45ch;
+}
+
+.title {
+  composes: h1 from global;
+  line-height: 1;
+}
+
+.tagline {
+  composes: h3 from global;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "image"
+      "text";
+    row-gap: var(--space-md);
+  }
+  .frame {
+    grid-area: image;
+    min-height: 85vh;
+    width: auto;
+  }
+  .left {
+    grid-area: text;
+    
+  }
+  .sticky {
+    position: static;
+    height: auto;
+    display: block;
+    
+    padding-right: var(--pad-x);
+  }
+}
