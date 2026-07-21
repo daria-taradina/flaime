@@ -9,30 +9,41 @@ export const loamBlends: CaseStudyData = {
       type: 'heroParallax',
       props: {
         title: 'Loam Blends',
-        tagline:
-          'Designed to earn trust, not just attention',
-        image: cloudinaryUrl(
-          'image',
-          'F-3_uunmgt',
-          'q_auto:good/f_auto'
-        ),
+        tagline: 'Designed to earn trust, not just attention',
+        image: cloudinaryUrl('image', 'F-3_uunmgt', 'q_auto:good/f_auto'),
         imageAlt: 'Loam Blends supplement packet',
       },
     },
 
     {
-  type: 'brief',
-    props: {
-      services: [
-        'Brand Strategy',
-        'Creative Direction',
-        'Concept Development',
-        'AI-Generated Product Imagery',
-        'Campaign Imagery',
-      ],
-      intro:
-        'Loam Blends is a wellness supplement brand focused on organic mushroom extracts designed to support everyday health. The project centered on creating a visual identity and content system that could communicate product benefits more clearly, strengthen customer trust, and help the brand stand out in an increasingly competitive supplement market.',
+      type: 'brief',
+      props: {
+        services: [
+          'Brand Strategy',
+          'Creative Direction',
+          'Concept Development',
+          'AI-Generated Product Imagery',
+          'Campaign Imagery',
+        ],
+        points: [
+          {
+            label: 'Overview',
+            text: 'Loam Blends creates organic mushroom supplements designed to support everyday wellness. ' + 
+            'As the category became increasingly competitive, the brand needed a clearer way to communicate its value and build stronger customer trust.',
+          },
+          {
+            label: 'Brief',
+            text: 'Develop a visual identity and content system that would clearly communicate product benefits, ' + 
+            'strengthen customer confidence, and differentiate the brand within the wellness space.',
+          },
+          {
+            label: 'Strategy',
+            text: 'Instead of leading with the products themselves, we focused on the outcomes they enable. ' + 
+            'By combining educational content, ingredient storytelling, and lifestyle imagery, we created a visual ' + 
+            'system that made wellness more relatable, memorable, and easier to understand.',
+          },
+        ],
+      },
     },
-  },
   ],
 };

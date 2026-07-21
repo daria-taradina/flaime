@@ -14,9 +14,14 @@ export interface HeroStaticProps {
   imageAlt: string;
 }
 
+export type BriefPoint = {
+  label: string;
+  text: string;
+};
+
 export interface BriefProps {
-  intro: string;
   services: string[];
+  points: BriefPoint[];
 }
 
 export interface BreakdownProps {

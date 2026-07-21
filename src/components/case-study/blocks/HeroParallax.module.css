@@ -2,7 +2,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
+  gap: 2rem;
 }
 
 .frame {
@@ -32,10 +32,13 @@
 .title {
   composes: h1 from global;
   line-height: 1;
+  font-weight: var(--fw-5);
+  /*color: var(--clr-accent);*/
 }
 
 .tagline {
   composes: h3 from global;
+  font-weight: var(--fw-3);
 }
 
 @media (max-width: 768px) {

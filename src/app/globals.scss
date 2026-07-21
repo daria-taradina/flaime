@@ -37,7 +37,7 @@
   --lh-p2:  #{clamped(21px, 30px)};
  
   /* Letter-spacing */
-  --ls-5: -0.05em;
+  --ls-5: -0.05em;        /* h1, p2 */
   --ls-8: -0.08em;
 
   /* Word-spacing */
@@ -45,7 +45,8 @@
 
   /* Font-weight */
   --fw-2: 200;
-  --fw-4: 400;
+  --fw-3: 300;  
+  --fw-4: 400;      /* global */
   --fw-5: 500;
 
   /* ── FLUID SPACING SCALE ── same function, spacing values */

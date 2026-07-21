@@ -4,7 +4,7 @@ import FadeIn from '@/components/ui/FadeIn';
 import type { BriefProps } from '../types';
 import styles from './Brief.module.css';
 
-export default function Brief({ intro, services }: BriefProps) {
+export default function Brief({ services, points }: BriefProps) {
   return (
     <Section theme="light" className={styles.wrapper}>
       <div className={styles.grid}>
@@ -16,9 +16,15 @@ export default function Brief({ intro, services }: BriefProps) {
             ))}
           </ul>
         </FadeIn>
-        <FadeIn delay={0.1}>
-          <p className={styles.intro}>{intro}</p>
-        </FadeIn>
+
+        <div className={styles.points}>
+          {points.map((point, i) => (
+            <FadeIn key={point.label} delay={0.1 + i * 0.05} className={styles.point}>
+              <span className={styles.pointLabel}>{point.label}</span>
+              <p className={styles.pointText}>{point.text}</p>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </Section>
   );
