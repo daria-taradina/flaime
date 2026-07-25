@@ -15,7 +15,7 @@
 }
 
 .listItem {
-  composes: p from global;
+  composes: h4 from global;
   font-style: italic;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .pointText {
-  composes: p from global;
+  composes: h3 from global;
   line-height: 1.5;
 }
 

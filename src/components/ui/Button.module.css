@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   composes: btn1 from global;
-  padding: 1.5rem 8rem;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
   white-space: nowrap;
   border: 1.5px solid currentColor;
   border-radius: 100px;

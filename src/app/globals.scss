@@ -72,6 +72,10 @@
   --pad-y: #{clamped(63px, 114px)};
   --pad-y-135: #{clamped(56px, 135px)};
 
+  /* ── Button padding ── */
+  --btn-pad-y: #{clamped(14px, 24px)};
+  --btn-pad-x: #{clamped(25px, 150px)};
+
   /* ── Width ── */
   --p2-w: #{clamped(360px, 402px)};
   --h1-w: #{clamped(360px, 840px)};

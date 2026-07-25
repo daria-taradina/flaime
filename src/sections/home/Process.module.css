@@ -11,8 +11,11 @@
 }
 
 .processRow {
-  border-top: 1px solid var(--section-fg);
   border-bottom: 1px solid var(--section-fg);
+}
+
+.processRow:first-child {
+  border-top: 1px solid var(--section-fg);
 }
 
 .processHeader {
