@@ -36,6 +36,7 @@
 }
 /* section-label reads its color from whichever theme is active */
 .section-label {
+  font-size: var(--fs-h3);
   color: var(--section-muted, var(--clr-muted));
   text-transform: uppercase;
 }

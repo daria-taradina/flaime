@@ -4,9 +4,9 @@
 }
 
 .servicesText {
-  composes: p from global;
-  max-width: 36ch; /* same as intro p */
-  padding-bottom: var(--gap-100);
+  composes: h3 from global;
+  max-width: 46ch; /* same as intro p */
+  padding-bottom: var(--gap-90);
 }
 
 .servicesInner {
@@ -46,8 +46,7 @@
 
 @media (hover: hover) {
   .serviceItem:hover .serviceTitle {
-    font-size: calc(var(--fs-h2) * 1.2);
-    font-weight: var(--fw-5);
+    font-size: calc(var(--fs-h2) * 1.1);
     /*text-shadow: 2px 2px 15px var(--clr-accent);
     text-decoration: underline solid var(--clr-accent) 0.3rem;
     text-underline-offset: 25%;*/
@@ -56,8 +55,7 @@
 
 @media (hover: none) {
   .serviceItem.isNear .serviceTitle {
-    font-size: calc(var(--fs-h2) * 1.05);
-    font-weight: var(--fw-5);
+    font-size: calc(var(--fs-h2) * 1.1);
   }
 
   .serviceTitle {

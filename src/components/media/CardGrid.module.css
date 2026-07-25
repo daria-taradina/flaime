@@ -35,13 +35,15 @@
 .label {
   display: flex;
   flex-direction: column;
+  margin-top: 1.1rem;
 }
 .title {
   composes: h3 from global;
+  line-height: 1.2;
   color: var(--section-fg);
 }
 .subtitle {
-  composes: p2 from global;
+  composes: p from global;
   color: var(--section-fg);
   opacity: 0.5;
 }

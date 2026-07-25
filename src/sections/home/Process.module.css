@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--space-md);
+  padding-block: var(--pad-30);
 }
 
 .stepTitle {
@@ -30,10 +30,10 @@
 }
 
 .chevron {
+  composes: h3 from global;
   flex-shrink: 0;
   transition: transform var(--transition);
   color: var(--section-fg);
-  font-size: var(--fs-h3);
   font-weight: 200;
 }
 
@@ -58,9 +58,8 @@
 }
 
 .stepBody {
-  composes: p2 from global;
-  padding-top: var(--space-sm);    /* gap: header bottom → paragraph start */
-  padding-bottom: var(--space-md); /* gap: paragraph end → row's bottom border */
+  composes: p from global;
+  padding-block: var(--pad-15) var(--pad-30); 
   padding-right: var(--pad-x);
 }
 

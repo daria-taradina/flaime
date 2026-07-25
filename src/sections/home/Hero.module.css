@@ -84,7 +84,7 @@
   
 }
 .heroDesc {
-  composes: p2 from global;
+  composes: h4 from global;
   color: color-mix(in srgb, var(--clr-white) 80%, transparent);
   padding-top: 2.125rem;
   

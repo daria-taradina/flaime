@@ -60,9 +60,9 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 ];
 
 export const SERVICES_BLURB =
-  "We're not here to follow trends—we're here to build something timeless. " +
-  "With a blend of creativity, strategy, and heart, we help ideas come to life. " +
-  "Every project we take on is an opportunity to learn, grow, and do something meaningful. " +
+  "We create complete visual systems where every element works together to support the same brand experience. " +
+  "From branding identity to social media content, every piece is designed to fit into the bigger picture.  " +
+  "With a blend of creativity, strategy, and design skills, we help ideas come to life. " +
   "We treat our clients like partners and our work like craft. ";
 
 // ── Process ─────────────────────────────────────────────────
