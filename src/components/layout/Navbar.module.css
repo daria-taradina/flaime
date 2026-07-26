@@ -36,7 +36,7 @@
 .nav { display: flex; gap: var(--space-md); }
 
 .navLink {
-  composes: p2 from global;
+  composes: p from global;
   color: rgba(255,255,255,0.65);
   transition: color var(--transition);
   position: relative;
@@ -54,7 +54,7 @@
 
 /* CTA */
 .cta {
-  composes: p2 from global;
+  composes: p from global;
   padding: 0.5rem 2.5rem;
   border: 1px solid var(--clr-white);
   border-radius: 100px;
@@ -92,7 +92,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  z-index: 190;
+  z-index: -1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -111,11 +111,15 @@
 @media (max-width: 768px) {
   .nav, .header .inner > .cta { display: none; }
   .burger { display: flex; }
-  .mobileNav { display: flex; gap: var(--space-2xl);}
-
+  .mobileNav { display: flex; gap: var(--space-md);}
+  
   .logoImg { display: block; height: 35px; width: auto; }
 
   /* same font/weight/letter-spacing/color as desktop .navLink — just bigger */
   .mobileNav .navLink { font-size: 2rem; padding: 1rem;}
-  .mobileNav .cta { font-size: 2.5rem; padding: 1.2rem 4rem; }
+  .mobileNav .cta { 
+    margin-top: var(--space-2xl);
+    font-size: 1.5rem; 
+    padding: 0.5rem 5rem; 
+  }
 }
