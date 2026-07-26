@@ -6,11 +6,7 @@
   transition: background var(--transition), padding var(--transition);
 }
 
-/* Same solid bg for scrolled AND menu-open — before, the header stayed
-   transparent while the menu was open at the top of the page, so the
-   white logo washed out against whatever was behind it. */
-.header.scrolled,
-.header.menuOpen {
+.header.scrolled {
   background: rgba(13,13,13,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -22,8 +18,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  position: relative;
-  z-index: 201;
 }
 
 /* Logo */
@@ -42,7 +36,7 @@
 .nav { display: flex; gap: var(--space-md); }
 
 .navLink {
-  composes: p from global;
+  composes: p2 from global;
   color: rgba(255,255,255,0.65);
   transition: color var(--transition);
   position: relative;
@@ -60,8 +54,8 @@
 
 /* CTA */
 .cta {
-  composes: p from global;
-  padding: 0.3rem 2.5rem;
+  composes: p2 from global;
+  padding: 0.5rem 2.5rem;
   border: 1px solid var(--clr-white);
   border-radius: 100px;
   color: var(--clr-white);
@@ -103,7 +97,6 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-md);
-  padding-inline: var(--pad-x);
   background: rgba(13,13,13,0.98);
   backdrop-filter: blur(12px);
   opacity: 0;
@@ -118,18 +111,11 @@
 @media (max-width: 768px) {
   .nav, .header .inner > .cta { display: none; }
   .burger { display: flex; }
-  .mobileNav { display: flex; }
+  .mobileNav { display: flex; gap: var(--space-2xl);}
 
   .logoImg { display: block; height: 35px; width: auto; }
 
   /* same font/weight/letter-spacing/color as desktop .navLink — just bigger */
-  .mobileNav .navLink { font-size: 2rem; padding: 1rem; }
-
-  .mobileNav .cta {
-    width: 100%;
-    margin-top: var(--space-xl);
-    font-size: 1.4rem;
-    padding: 1.2rem 2.5rem;
-    text-align: center;
-  }
+  .mobileNav .navLink { font-size: 2rem; padding: 1rem;}
+  .mobileNav .cta { font-size: 2.5rem; padding: 1.2rem 4rem; }
 }
