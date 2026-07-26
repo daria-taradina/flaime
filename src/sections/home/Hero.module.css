@@ -90,7 +90,7 @@
   
 }
 .scrollIndicator {
-  composes: p2 from global;
+  composes: h4 from global;
   text-transform: uppercase;
   color: var(--clr-white);
   opacity: 80%;
