@@ -31,7 +31,7 @@
   --fs-p2:  #{clamped(15px, 24px)};
   --fs-big-btn: #{clamped(20px, 26px)};*/
 
-  --fs-h1:  #{clamped(62px, 107.4px)};
+  --fs-h1:  #{clamped(60px, 107.4px)};
   --fs-h2:  #{clamped(39px, 64px)};
   --fs-h3:  #{clamped(20.64px, 28.6px)};
   --fs-h4:  #{clamped(17.4px, 22.4px)};
@@ -73,8 +73,11 @@
   --pad-y-135: #{clamped(56px, 135px)};
 
   /* ── Button padding ── */
-  --btn-pad-y: #{clamped(14px, 24px)};
+  --btn-pad-y: #{clamped(10px, 24px)};
   --btn-pad-x: #{clamped(25px, 150px)};
+  
+  --btn-sm-pad-y: #{clamped(8px, 12px)};
+  --btn-sm-pad-x: #{clamped(20px, 32px)};
 
   /* ── Width ── */
   --p2-w: #{clamped(360px, 402px)};

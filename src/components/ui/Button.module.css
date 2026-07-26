@@ -16,25 +16,15 @@
   border-color: var(--section-fg);
 }
 
-.md {  
+.md {
   max-width: 100%;
 }
 .sm {
   padding: var(--btn-sm-pad-y) var(--btn-sm-pad-x);
 }
 
-/* Full-width variant — same container-relative shrink as .heroDesc, so
-   button and paragraph stay proportionally in sync as the column narrows */
-.full {
-  width: 100%;
-  padding: 0.9rem 1.5rem;
-  font-size: clamp(1rem, 4.2cqi, var(--fs-btn)); /* raised floor from 0.8rem — TODO: verify against real min container width */
-  text-align: center;
-  white-space: nowrap;
-}
-
 @media (max-width: 768px) {
   .md {
-    width: 100%; /* matches container width, same as cards/text — not its own formula anymore */
+    width: 100%;
   }
 }
