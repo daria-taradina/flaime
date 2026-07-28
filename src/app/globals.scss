@@ -10,6 +10,11 @@
 
 
 :root {
+  /* ── Grid ── */
+  --grid-max-width: 1728px;
+  --grid-gutter: #{clamped(18px, 40px)};
+  --grid-columns: 12;
+
   /* ── COLOR ── */
   --clr-bg-dark:  #0D0D0D;
   --clr-bg-light: #D9D4D0;
@@ -95,6 +100,18 @@
   --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.uContainer {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}
+
+.uGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  column-gap: var(--grid-gutter);
+}
+
 
 /* ── RESET ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -140,13 +157,16 @@ ul, ol { list-style: none; }
 .h3 {
   font-size: var(--fs-h3);
   line-height: 1.1;
+  text-wrap: balanced;
 }
 .h4 {
   font-size: var(--fs-h4);
   line-height: 1.3;
+  text-wrap: pretty;
 }
 .p {
   font-size: var(--fs-p);
+  text-wrap: pretty;
 }
 .p2 {
   font-size: var(--fs-p2);

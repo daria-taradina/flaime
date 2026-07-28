@@ -5,15 +5,13 @@
    the same way we did pad-x/pad-y (measure @440, measure @1728,
    run through clamped() if this file becomes .module.scss). */
 .hero {
-  --hero-col-gap: 10%;              /* TODO */
-  --hero-right-inset: var(--pad-y-135);  /* TODO — confirm this differs from pad-x, or matches it */
-  /*--hero-stack-gap: var(--space-sm); /* TODO */
+  --hero-col-gap: 10%;
   --hero-right-width: var(--p2-w);
   --hero-mobile-stack-gap: var(--space-lg); /* TODO */
   --hero-inset-left: var(--pad-x);   /* TODO */
   --hero-mobile-scroll-bottom: var(--space-lg); /* TODO */
 
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 0;
   min-height: 100vh;
@@ -37,7 +35,7 @@
   object-position: center top;
   display: block;
   pointer-events: none;
-  transform: scale(1.12); /* buffer for the parallax translate below — prevents edges showing */
+   /* buffer for the parallax translate below — prevents edges showing */
 }
 .heroBgOverlay {
   position: absolute;
@@ -59,34 +57,29 @@
   padding-top: 8rem;
   width: 100%;
   padding-left: var(--pad-x);
-  padding-right: var(--hero-right-inset);
-  padding-bottom: var(--pad-y);
+  padding-right: var(--pad-y-135);
+  padding-bottom: 5%;
 }
 .heroHeadline {
   composes: h1 from global;
-  width: 100%;  
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-self: flex-end;
 }
-.headlineLineWrap {
-  display: block;
-  overflow: hidden;
-}
-.headlineLine {
-  display: block; /* motion.span is inline by default — needed for the y-transform to read as a vertical line reveal */
-}
+
 .heroRight {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  
+  justify-content: space-around;
   width: 100%;
   
 }
 .heroDesc {
   composes: h4 from global;
   color: color-mix(in srgb, var(--clr-white) 80%, transparent);
-  padding-top: 2.125rem;
+  
   
 }
 .scrollIndicator {

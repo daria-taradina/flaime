@@ -1,7 +1,7 @@
 // ──────────────────────────────────────────────────────────
 // FLUID CLAMP GENERATOR
 // Reproduces Utopia's math as a reusable Sass function, scoped
-// to Flaime's two Figma reference frames: 800px and 1728px.
+// to Flaime's two Figma reference frames: 440px and 1728px.
 //
 // Usage in globals.scss:
 //   --fs-h1: #{clamped(32px, 64px)};

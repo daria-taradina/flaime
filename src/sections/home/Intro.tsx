@@ -8,16 +8,14 @@ import styles from './Intro.module.css';
 export default function Intro() {
   return (
     <Section theme="light" className={styles.introSection} containerClassName={styles.intro}>
-      <div className={styles.top}>
-        <FadeIn className={styles.text}>
-          <p>{INTRO.text}</p>
-        </FadeIn>
-        <FadeIn delay={0.05} className={styles.cta}>
-          <Button href={INTRO.cta.to} size="md">
-            {INTRO.cta.label}
-          </Button>
-        </FadeIn>
-      </div>
+      <FadeIn className={styles.text}>
+        <p>{INTRO.text}</p>
+      </FadeIn>
+      <FadeIn delay={0.05} className={styles.cta}>
+        <Button href={INTRO.cta.to} size="md">
+          {INTRO.cta.label}
+        </Button>
+      </FadeIn>
       <FadeIn delay={0.1} className={styles.cards}>
         <CardGrid items={INTRO.cards} />
       </FadeIn>

@@ -1,55 +1,32 @@
-/* ── INTRO ─────────────────────────────────────────────────── */
-.introSection {
-  position: relative;
-  z-index: 1;
-}
 .intro {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-90); /* was var(--pad-y) — borrowed outer-inset token, now its own scale value */
-}
-.top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between; /* was a hardcoded 423px gap — now derives from leftover width instead */
-  width: 100%;
-  gap: var(--gap-90);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-gutter);
+  row-gap: var(--gap-90);
 }
 .text {
   composes: h3 from global;
-  max-width: 45ch;
-  flex: 0 1 auto;
+  grid-column: 1 / 7;
+  grid-row: 1;
 }
 .cta {
-  flex-shrink: 0;
-  padding-top: 0.25em;
+  grid-column: 10 / 13;
+  grid-row: 1;
+  align-self: end;
+  justify-self: end;
+}
+.cards {
+  grid-column: 1 / 13;
+  grid-row: 2;
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .intro {
-    display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "text"
-      "cards"
-      "cta";
+    grid-template-areas: "text" "cards" "cta";
     row-gap: var(--space-md);
   }
-  .top {
-    display: contents;
-  }
-  .text {
-    grid-area: text;
-    padding-bottom: var(--space-lg); /* was 2.8750rem — matched to nearest scale token */
-  }
-  .cards {
-    grid-area: cards;
-  }
-  .cta {
-    grid-area: cta;
-    padding-top: 0;
-  }
+  .text { grid-area: text; padding-bottom: var(--space-lg); }
+  .cards { grid-area: cards; }
+  .cta { grid-area: cta; padding-top: 0; justify-self: start; }
 }
