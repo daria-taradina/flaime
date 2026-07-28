@@ -16,6 +16,10 @@
 }
 .track::-webkit-scrollbar { display: none; }
 
+.track {
+  --visible-cards: 4.33; /* desktop default */
+}
+
 .spacer {
   flex-shrink: 0;
   width: var(--pad-x, 60px);
@@ -24,8 +28,8 @@
 }
 
 .card {
+  width: calc((100% - (var(--visible-cards) - 1) * var(--gap-13)) / var(--visible-cards));
   flex-shrink: 0;
-  width: var(--card-rec);
   border-radius: var(--radius-md);
   background-size: cover;
   background-position: center;
@@ -35,7 +39,7 @@
   transition: transform 0.4s ease;
 }
 
-.card:hover { transform: scale(1.02); }
+
 
 .cardVideo {
   position: absolute;
@@ -106,9 +110,9 @@
   pointer-events: none;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .track { --visible-cards: 1.35; }
   .card {
-    width: clamp(220px, 78vw, 300px);
     scroll-snap-align: center;
   }
   .cardOverlay {
