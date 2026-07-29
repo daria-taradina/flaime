@@ -149,7 +149,7 @@ ul, ol { list-style: none; }
   :root {
     --grid-columns: 4;
     --grid-gap: 16px;
-    --grid-margin: 2.5vmax;
+    --grid-margin: 3vmax;
   }
 }
  
@@ -160,7 +160,7 @@ ul, ol { list-style: none; }
 }
 .h2 {
   font-size: var(--fs-h2);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 .h3 {
   font-size: var(--fs-h3);
@@ -172,6 +172,8 @@ ul, ol { list-style: none; }
 }
 .p {
   font-size: var(--fs-p);
+  line-height: 1.2;
+  text-wrap: pretty;
 }
 .p2 {
   font-size: var(--fs-p2);

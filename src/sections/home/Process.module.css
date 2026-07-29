@@ -60,7 +60,7 @@
 .stepBody {
   composes: p from global;
   padding-block: var(--pad-15) var(--pad-30); 
-  padding-right: var(--pad-x);
+  padding-right: 4vmax;
 }
 
 /* ── RESPONSIVE ── */
