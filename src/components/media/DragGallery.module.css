@@ -8,23 +8,21 @@
   gap: var(--gap-13);
   overflow-x: scroll;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   cursor: grab;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  user-select: none;
 }
 .track::-webkit-scrollbar { display: none; }
 
 .track {
-  --visible-cards: 4.33; /* desktop default */
+  --visible-cards: 4.33;
 }
 
 .spacer {
   flex-shrink: 0;
   width: var(--pad-x, 60px);
-  scroll-snap-align: start; /* new — without this, mandatory snapping skips 
-    past the spacer entirely on load since 0 isn't a recognized snap point */
 }
 
 .card {
@@ -35,11 +33,8 @@
   background-position: center;
   position: relative;
   overflow: hidden;
-  scroll-snap-align: start;
   transition: transform 0.4s ease;
 }
-
-
 
 .cardVideo {
   position: absolute;
@@ -111,7 +106,13 @@
 }
 
 @media (max-width: 768px) {
-  .track { --visible-cards: 1.35; }
+  .track {
+    --visible-cards: 1.35;
+    scroll-snap-type: x mandatory;
+  }
+  .spacer {
+    scroll-snap-align: start;
+  }
   .card {
     scroll-snap-align: center;
   }
