@@ -56,7 +56,7 @@
 /* CTA */
 .cta {
   composes: p from global;
-  padding: 0.5rem 2.5rem;
+  padding: 0.4rem 2.5rem;
   border: 1px solid var(--clr-white);
   border-radius: 100px;
   color: var(--clr-white);
@@ -119,8 +119,8 @@
   /* same font/weight/letter-spacing/color as desktop .navLink — just bigger */
   .mobileNav .navLink { font-size: 2rem; padding: 1rem;}
   .mobileNav .cta { 
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
     font-size: 1.5rem; 
-    padding: 0.5rem 5rem; 
+    padding: 0.5rem 5rem;
   }
 }

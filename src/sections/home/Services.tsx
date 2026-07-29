@@ -40,7 +40,7 @@ export default function Services() {
   return (
     <Section theme="dark" className={styles.services}>
       <FadeIn className={styles.servicesText}>
-        <p>{SERVICES_BLURB}</p>
+        {SERVICES_BLURB}
       </FadeIn>
       <div className={styles.servicesInner}>
         <FadeIn className={styles.servicesLabelCol}>

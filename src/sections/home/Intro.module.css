@@ -1,6 +1,6 @@
 .text {
   composes: h3 from global;
-  grid-column: 1 / 12;
+  grid-column: 1 / 13;
 }
 
 .cta {
@@ -23,7 +23,7 @@
     order: 3;
     justify-self: start;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
   .cards {
     grid-column: 1 / -1;

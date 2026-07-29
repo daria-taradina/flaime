@@ -10,11 +10,19 @@ import styles from './Process.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Process() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
   const listRef = useRef<HTMLDivElement>(null);
 
   const toggle = (i: number) => {
-    setOpenIndex((prev) => (prev === i ? null : i));
+    setOpenIndices((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) {
+        next.delete(i);
+      } else {
+        next.add(i);
+      }
+      return next;
+    });
   };
 
   useEffect(() => {
@@ -45,11 +53,11 @@ export default function Process() {
   return (
     <Section theme="dark">
       <div className={styles.processLabel}>
-      <span className="section-label">Our Process</span>
+        <span className="section-label">Our Process</span>
       </div>
       <div className={styles.processList} ref={listRef}>
         {PROCESS.steps.map((step, i) => {
-          const isOpen = openIndex === i;
+          const isOpen = openIndices.has(i);
           return (
             <div key={step.title} className={styles.processRow}>
               <button
