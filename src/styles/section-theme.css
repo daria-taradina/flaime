@@ -1,25 +1,33 @@
-/*
-  SECTION SYSTEM
-  ─────────────────────────────────────────────────────────
-  Imported in layout.tsx AFTER globals.scss, since it reads
-  --clr-* and --pad-x / --pad-y from there.
+/* ─────────────────────────────────────────────────────────
+   SECTION SYSTEM
 
-  Three independent knobs, each driven by a data attribute
-  set in Section.tsx:
-  - data-theme="dark" | "light"   → background + text colors
-  - data-pad-y="true" | "false"   → top/bottom padding on/off
-  - .container (a plain class)    → left/right padding, always on
-                                     unless container={false} skips
-                                     rendering it entirely
+   Section controls:
+   - theme
+   - background
+   - vertical spacing
+
+   pageGrid controls:
+   - max width
+   - horizontal margins
+   - columns
+   - column gaps
+
+   Individual section modules control:
+   - where content sits within the grid
+   - section-specific layout
 */
 
-/* ── COLOR THEME ─────────────────────────────────────────── */
+/* ── SECTION ───────────────────────────────────────────── */
+
 .section {
   position: relative;
   background: var(--section-bg);
   color: var(--section-fg);
-  /*margin-inline: auto;*/
 }
+
+
+/* ── THEMES ────────────────────────────────────────────── */
+
 .section[data-theme='dark'] {
   --section-bg: var(--clr-bg-dark);
   --section-fg: var(--clr-white);
@@ -27,6 +35,7 @@
   --section-border: var(--clr-border);
   --section-card-bg: rgba(255, 255, 255, 0.03);
 }
+
 .section[data-theme='light'] {
   --section-bg: var(--clr-bg-light);
   --section-fg: var(--clr-bg-dark);
@@ -34,27 +43,19 @@
   --section-border: rgba(13, 13, 13, 0.12);
   --section-card-bg: rgba(13, 13, 13, 0.03);
 }
-/* section-label reads its color from whichever theme is active */
-.section-label {
-  font-size: var(--fs-h3);
-  color: var(--section-muted, var(--clr-muted));
-  text-transform: uppercase;
-}
 
-/* ── VERTICAL PADDING ────────────────────────────────────── */
-/* On by default. A section that manages its own top/bottom
-   spacing (e.g. Hero, full-bleed galleries) passes padY={false}
-   to opt out. */
+
+/* ── VERTICAL SPACING ─────────────────────────────────── */
+
 .section[data-pad-y='true'] {
   padding-block: var(--pad-y);
 }
 
-/* ── HORIZONTAL PADDING ──────────────────────────────────── */
-/* .container is the inner wrapper Section renders when
-   container={true} (the default). It's what every normal
-   section's content sits inside; full-bleed sections skip it
-   via container={false}. */
-.container {
-  width: 100%;
-  padding-inline: var(--pad-x);
+
+/* ── SECTION LABEL ─────────────────────────────────────── */
+
+.section-label {
+  font-size: var(--fs-h3);
+  color: var(--section-muted);
+  text-transform: uppercase;
 }

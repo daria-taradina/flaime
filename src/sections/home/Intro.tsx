@@ -7,9 +7,9 @@ import styles from './Intro.module.css';
 
 export default function Intro() {
   return (
-    <Section theme="light" className={styles.introSection} containerClassName={styles.intro}>
+    <Section theme="light" className={styles.introSection}>
       <FadeIn className={styles.text}>
-        <p>{INTRO.text}</p>
+          {INTRO.text}
       </FadeIn>
       <FadeIn delay={0.05} className={styles.cta}>
         <Button href={INTRO.cta.to} size="md">

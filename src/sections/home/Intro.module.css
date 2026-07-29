@@ -1,32 +1,33 @@
-.intro {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--grid-gutter);
-  row-gap: var(--gap-90);
-}
 .text {
   composes: h3 from global;
-  grid-column: 1 / 7;
-  grid-row: 1;
+  grid-column: 1 / 12;
+  text-align: justify;
 }
+
 .cta {
-  grid-column: 10 / 13;
-  grid-row: 1;
+  grid-column: 19 / 27;
   align-self: end;
   justify-self: end;
 }
+
 .cards {
-  grid-column: 1 / 13;
-  grid-row: 2;
+  grid-column: 1 / -1;
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px) {
-  .intro {
-    grid-template-columns: 1fr;
-    grid-template-areas: "text" "cards" "cta";
-    row-gap: var(--space-md);
+  .text {
+    grid-column: 1 / -1;
   }
-  .text { grid-area: text; padding-bottom: var(--space-lg); }
-  .cards { grid-area: cards; }
-  .cta { grid-area: cta; padding-top: 0; justify-self: start; }
+  .cta {
+    grid-column: 1 / -1;
+    order: 3;
+    justify-self: start;
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .cards {
+    grid-column: 1 / -1;
+    order: 2;
+  }
 }

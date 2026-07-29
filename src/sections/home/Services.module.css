@@ -1,19 +1,17 @@
-.services {
-  display: flex;
-  flex-direction: column;
-}
-
 .servicesText {
+  grid-column: 1 / 13;
   composes: h3 from global;
-  max-width: 46ch; /* same as intro p */
+  margin-inline-end: auto;
+  text-align: justify;
   padding-bottom: var(--gap-90);
 }
 
 .servicesInner {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
-  align-items: center;   /* centers this block relative to .services — no width/margin value needed */
-  gap: var(--pad-x);  /* label → list gap, reusing page-pad since it matches */
+  align-items: center;
+  gap: var(--pad-x);
 }
 
 .servicesLabelCol {
@@ -39,17 +37,14 @@
 
 .serviceTitle {
   display: inline-block;
-  composes: h2 from global;   /* reuses --fs-h2 directly, no section-specific size */
-  white-space: nowrap;        /* each line stays one line regardless of resize */  
+  composes: h2 from global;
+  white-space: nowrap;
   transition: font-size var(--transition);
 }
 
 @media (hover: hover) {
   .serviceItem:hover .serviceTitle {
     font-size: calc(var(--fs-h2) * 1.1);
-    /*text-shadow: 2px 2px 15px var(--clr-accent);
-    text-decoration: underline solid var(--clr-accent) 0.3rem;
-    text-underline-offset: 25%;*/
   }
 }
 
@@ -57,7 +52,6 @@
   .serviceItem.isNear .serviceTitle {
     font-size: calc(var(--fs-h2) * 1.1);
   }
-
   .serviceTitle {
     line-height: 1.6;
   }

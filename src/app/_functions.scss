@@ -16,7 +16,7 @@
 @use "sass:math";
 
 $default-min-bp: 440px;
-$default-max-bp: 1728px;
+$default-max-bp: 2560px;
 
 @function to-rems($px) {
   @return math.div($px, 16px) * 1rem;

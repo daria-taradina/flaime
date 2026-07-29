@@ -1,23 +1,19 @@
-import { CSSProperties, ElementType, HTMLAttributes, ReactNode } from 'react';
 
-/**
- * Section — the one place that decides a block's background/text theme
- * and its vertical spacing.
- *
- * <Section theme="dark">...</Section>
- * <Section theme="light">...</Section>
- * <Section theme="dark" container={false}>   -> full-bleed, no side padding
- * <Section theme="dark" padY={false}>        -> section handles its own top/bottom spacing
- * <Section theme="dark" bg="#171310">        -> one-off custom background color
- */
+import {
+  CSSProperties,
+  ElementType,
+  HTMLAttributes,
+  ReactNode,
+} from 'react';
+
 type SectionProps = {
   as?: ElementType;
   theme?: 'dark' | 'light';
   bg?: string;
-  container?: boolean;
+  grid?: boolean;
   padY?: boolean;
-  containerClassName?: string;
   className?: string;
+  gridClassName?: string;
   style?: CSSProperties;
   children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
@@ -26,10 +22,10 @@ export default function Section({
   as: Tag = 'section',
   theme = 'dark',
   bg,
-  container = true,
+  grid = true,
   padY = true,
-  containerClassName = '',
   className = '',
+  gridClassName = '',
   style,
   children,
   ...rest
@@ -46,8 +42,10 @@ export default function Section({
       style={mergedStyle}
       {...rest}
     >
-      {container ? (
-        <div className={`container ${containerClassName}`.trim()}>{children}</div>
+      {grid ? (
+        <div className={`pageGrid ${gridClassName}`.trim()}>
+          {children}
+        </div>
       ) : (
         children
       )}
