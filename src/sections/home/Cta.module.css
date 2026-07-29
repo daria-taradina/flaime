@@ -35,6 +35,7 @@
 }
 
 .content {
+  grid-column: 1 / -1;
   position: relative;
   z-index: 1;
   display: flex;
@@ -42,7 +43,6 @@
   align-items: center;
   text-align: center;
   gap: var(--space-md);
-  width: 100%;
   padding: var(--pad-y) var(--pad-x);
 }
 
@@ -57,7 +57,7 @@
 }
 
 .body {
-  composes: p2 from global;
+  composes: p from global;
   color: color-mix(in srgb, var(--section-fg) 80%, transparent);
   max-width: 37ch;
   padding-bottom: var(--pad-y);

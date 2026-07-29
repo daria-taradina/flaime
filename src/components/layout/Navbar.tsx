@@ -79,7 +79,7 @@ export default function Navbar() {
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
-      <div className={`container ${styles.inner}`}>
+      <div className={`pageGrid ${styles.inner}`}>
         <Link href="/" className={styles.logo} aria-label="Flaime Studio home" onClick={() => setMenuOpen(false)}>
           <Logo />
         </Link>

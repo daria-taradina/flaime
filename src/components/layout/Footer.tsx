@@ -43,7 +43,7 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.top}`}>
+      <div className={`pageGrid ${styles.top}`}>
         <p className={styles.location}>
           Based in {CONTACT_INFO.location}. {CONTACT_INFO.locationNote}.
         </p>

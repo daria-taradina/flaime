@@ -43,8 +43,10 @@ export default function Process() {
   }, []);
 
   return (
-    <Section theme="dark" containerClassName={styles.process}>
+    <Section theme="dark">
+      <div className={styles.processLabel}>
       <span className="section-label">Our Process</span>
+      </div>
       <div className={styles.processList} ref={listRef}>
         {PROCESS.steps.map((step, i) => {
           const isOpen = openIndex === i;

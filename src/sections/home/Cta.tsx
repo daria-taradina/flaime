@@ -10,7 +10,7 @@ export default function CTA() {
   const hasVideo = Boolean(CTA_DATA.video);
 
   return (
-    <Section theme="dark" container={false} className={styles.cta}>
+    <Section theme="dark" className={styles.cta}>
       <div className={styles.bg} aria-hidden="true">
         {hasVideo ? (
           <video

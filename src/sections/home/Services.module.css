@@ -2,7 +2,7 @@
   grid-column: 1 / 13;
   composes: h3 from global;
   margin-inline-end: auto;
-  text-align: justify;
+  
   padding-bottom: var(--gap-90);
 }
 
@@ -55,4 +55,13 @@
   .serviceTitle {
     line-height: 1.6;
   }
+}
+
+@media (max-width: 768px) {
+  .servicesText {
+  grid-column: 1 / -1;
+}
+.servicesInner {
+  grid-column: 1 / -1;
+}
 }

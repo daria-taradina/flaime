@@ -1,12 +1,9 @@
 /* ── PROCESS ───────────────────────────────────────────────── */
-.process {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
+.processLabel {
+  grid-column: 1 / 13;
 }
-
 .processList {
-  width: 100%;
+  grid-column: 14 / 27;
   padding-right: var(--pad-x);
 }
 
@@ -68,12 +65,12 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .process {
-    grid-template-columns: 1fr;
-    row-gap: var(--space-lg);
+  .processLabel {
+    grid-column: 1 / -1; 
+  margin-bottom: 2rem;
   }
   .processList {
-    padding-right: 0; /* was a desktop-only inset for the right column of a 1fr 1fr grid — full width now */
+    grid-column: 1 / -1; 
+    width: 100%;
   }
-  
 }

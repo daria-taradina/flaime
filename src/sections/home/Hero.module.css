@@ -100,6 +100,7 @@
 @media (max-width: 768px) {
   .heroHeadline {
     grid-column: 1 / -1;
+    white-space: nowrap;
   }
   .heroRight {
     grid-column: 1 / -1;

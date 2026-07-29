@@ -1,7 +1,6 @@
 .text {
   composes: h3 from global;
   grid-column: 1 / 12;
-  text-align: justify;
 }
 
 .cta {
