@@ -23,5 +23,5 @@ export const DURATION_SLOW = 0.8;
 export const STAGGER_DELAY = 0.12;
 
 // ── Breakpoints (matches globals.scss media queries) ─────────
-export const BP_MOBILE = 768;
+export const BP_MOBILE = 1024;
 export const MOBILE_QUERY = `(max-width: ${BP_MOBILE}px)`;

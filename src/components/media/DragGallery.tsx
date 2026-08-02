@@ -31,8 +31,11 @@ export default function DragGallery({ items = [], ratio = '3 / 4', showOverlay =
   const startX = useRef(0);
   const scrollStart = useRef(0);
   const hasMoved = useRef(false);
+  const pendingDx = useRef(0);
+  const rafId = useRef<number | null>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
+  const [dragging, setDragging] = useState(false);
 
   const updateArrows = useCallback(() => {
     const t = trackRef.current;
@@ -49,26 +52,42 @@ export default function DragGallery({ items = [], ratio = '3 / 4', showOverlay =
     return () => t.removeEventListener('scroll', updateArrows);
   }, [updateArrows]);
 
-  const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const applyScroll = useCallback(() => {
+    if (trackRef.current) {
+      trackRef.current.scrollLeft = scrollStart.current - pendingDx.current;
+    }
+    rafId.current = null;
+  }, []);
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!trackRef.current) return;
     isDragging.current = true;
     hasMoved.current = false;
-    startX.current = e.pageX;
+    startX.current = e.clientX;
     scrollStart.current = trackRef.current.scrollLeft;
-    trackRef.current.style.cursor = 'grabbing';
+    trackRef.current.setPointerCapture(e.pointerId); // keeps receiving events even if cursor leaves the element
+    setDragging(true);
   };
 
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging.current || !trackRef.current) return;
-    e.preventDefault();
-    const dx = e.pageX - startX.current;
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging.current) return;
+    const dx = (e.clientX - startX.current) * 1.1;
     if (Math.abs(dx) > 4) hasMoved.current = true;
-    trackRef.current.scrollLeft = scrollStart.current - dx * 1.1;
+    pendingDx.current = dx;
+    if (rafId.current === null) {
+      rafId.current = requestAnimationFrame(applyScroll);
+    }
   };
 
-  const onMouseUp = () => {
+  const endDrag = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDragging.current) return;
     isDragging.current = false;
-    if (trackRef.current) trackRef.current.style.cursor = 'grab';
+    setDragging(false);
+    if (rafId.current !== null) {
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
+    }
+    trackRef.current?.releasePointerCapture(e.pointerId);
   };
 
   const scrollBy = (dir: 1 | -1) => {
@@ -102,18 +121,16 @@ export default function DragGallery({ items = [], ratio = '3 / 4', showOverlay =
 
       <div
         ref={trackRef}
-        className={styles.track}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
+        className={`${styles.track} ${dragging ? styles.isDragging : ''}`}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
       >
         <div className={styles.spacer} aria-hidden="true" />
-
         {items.map((item) => (
           <GalleryCard key={item.id} item={item} ratio={ratio} showOverlay={showOverlay} />
         ))}
-
         <div className={styles.spacer} aria-hidden="true" />
       </div>
     </div>

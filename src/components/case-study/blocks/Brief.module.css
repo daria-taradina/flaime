@@ -1,9 +1,15 @@
 /* components/case-study/blocks/Brief.module.css */
-.grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-2xl);
-  align-items: start;
+
+.services {
+  grid-column: 1 / 9; /* adjust to match your Section grid */
+}
+
+.points {
+  grid-column: 11 / 27; /* adjust to match your Section grid */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 100%;
 }
 
 .list {
@@ -17,13 +23,6 @@
 .listItem {
   composes: h4 from global;
   font-style: italic;
-}
-
-.points {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  max-width: 100%;
 }
 
 .point {
@@ -43,21 +42,18 @@
   line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
+@media (max-width: 1024px) {
+  .services {
+    grid-column: 1 / -1;
+    align-self: flex-end;
+    text-align: right;
   }
 
   .points {
+    grid-column: 1 / -1;
     order: 1;
     max-width: none;
     gap: var(--space-xl);
-  }
-
-  .services {
-    align-self: flex-end;
-    text-align: right;
   }
 
   .list {

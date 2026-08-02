@@ -1,6 +1,6 @@
 .text {
   composes: h3 from global;
-  grid-column: 1 / 12;
+  grid-column: 1 / 13;
 }
 
 .cta {
@@ -14,7 +14,7 @@
   margin-top: 3rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .text {
     grid-column: 1 / -1;
   }
@@ -23,7 +23,7 @@
     order: 3;
     justify-self: start;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 4rem;
   }
   .cards {
     grid-column: 1 / -1;

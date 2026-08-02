@@ -15,7 +15,7 @@
 
 @use "sass:math";
 
-$default-min-bp: 440px;
+$default-min-bp: 320px;
 $default-max-bp: 2560px;
 
 @function to-rems($px) {

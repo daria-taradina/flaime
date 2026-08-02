@@ -23,7 +23,7 @@
   padding: var(--btn-sm-pad-y) var(--btn-sm-pad-x);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .md {
     width: 100%;
   }

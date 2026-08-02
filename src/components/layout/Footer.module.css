@@ -79,7 +79,7 @@
 /* © mark — pinned to the same 60px edge as everything else, positioned independently
    of the logo so it never eats into the logo's fit-to-width measurement */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .top { flex-direction: column;  gap: var(--space-xs);}
   /* DOM order is location → links → copyright (needed for desktop's
      space-between row: location left, links middle, copyright right).

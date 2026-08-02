@@ -1,9 +1,8 @@
 .servicesText {
   grid-column: 1 / 13;
   composes: h3 from global;
-  margin-inline-end: auto;
-  
-  padding-bottom: var(--gap-90);
+  margin-inline-end: auto;  
+  padding-bottom: 7rem;
 }
 
 .servicesInner {
@@ -11,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--pad-x);
+  gap: 2.5rem;
 }
 
 .servicesLabelCol {
@@ -53,11 +52,11 @@
     font-size: calc(var(--fs-h2) * 1.1);
   }
   .serviceTitle {
-    line-height: 1.6;
+    line-height: 1.8;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .servicesText {
   grid-column: 1 / -1;
 }

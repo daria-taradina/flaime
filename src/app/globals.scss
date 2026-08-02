@@ -37,8 +37,8 @@
   --fs-p2:  #{clamped(15px, 24px)};
   --fs-big-btn: #{clamped(20px, 26px)};*/
 
-  --fs-h1:  #{clamped(62px, 122.4px)};
-  --fs-h2:  #{clamped(39px, 72px)};
+  --fs-h1:  #{clamped(40px, 160px)};
+  --fs-h2:  #{clamped(35px, 72px)};
   --fs-h3:  #{clamped(20.64px, 31.2px)};
   --fs-h4:  #{clamped(17.4px, 24px)};
   --fs-p:   #{clamped(16.3px, 21.6px)};
@@ -79,7 +79,7 @@
   --pad-y-135: #{clamped(56px, 135px)};
 
   /* ── Button padding ── */
-  --btn-pad-y: #{clamped(10px, 24px)};
+  --btn-pad-y: #{clamped(15px, 24px)};
   --btn-pad-x: #{clamped(25px, 150px)};
   
   --btn-sm-pad-y: #{clamped(8px, 12px)};
@@ -145,11 +145,11 @@ ul, ol { list-style: none; }
 }
 
 /* ── Grid scale ──────────── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   :root {
     --grid-columns: 4;
     --grid-gap: 16px;
-    --grid-margin: 20px;
+    --grid-margin: 3vmax;
   }
 }
  
@@ -160,20 +160,19 @@ ul, ol { list-style: none; }
 }
 .h2 {
   font-size: var(--fs-h2);
-  line-height: 1.3;
+  line-height: 1.5;
 }
 .h3 {
   font-size: var(--fs-h3);
   line-height: 1.1;
-  text-wrap: pretty;
 }
 .h4 {
   font-size: var(--fs-h4);
   line-height: 1.3;
-  text-wrap: pretty;
 }
 .p {
   font-size: var(--fs-p);
+  line-height: 1.2;
   text-wrap: pretty;
 }
 .p2 {
