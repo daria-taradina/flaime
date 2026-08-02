@@ -1,0 +1,98 @@
+/* components/media/Card.module.css */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.link {
+  display: contents; /* Link is just a click target, doesn't affect layout */
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-6px) scale(1.02);
+    z-index: 1;
+  }
+  .card:hover .thumbBg {
+    box-shadow:
+      0 12px 24px -8px rgba(0, 0, 0, 0.35),
+      0 4px 8px -2px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.cardHovered {
+  cursor: none; /* only this card, only while hovered */
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--section-card-bg);
+}
+
+.thumbBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: box-shadow var(--transition);
+}
+
+.thumbVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.1rem;
+}
+.title {
+  composes: h3 from global;
+  line-height: 1.2;
+  color: var(--section-fg);
+}
+.subtitle {
+  composes: p from global;
+  color: var(--section-fg);
+  opacity: 0.5;
+}
+
+/* cursor-replacement label — positioned relative to the card, not the viewport */
+.cursorLabel {
+  position: absolute;
+  top: -20;
+  left: 0;
+  z-index: 20;
+  padding: 0.5rem 1.1rem;
+  background: #111;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.cursorLabelVisible {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .thumb {
+    aspect-ratio: 3 / 2;
+  }
+}
