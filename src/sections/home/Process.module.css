@@ -64,7 +64,7 @@
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .processLabel {
     grid-column: 1 / -1; 
     margin-bottom: 2rem;

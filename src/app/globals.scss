@@ -37,7 +37,7 @@
   --fs-p2:  #{clamped(15px, 24px)};
   --fs-big-btn: #{clamped(20px, 26px)};*/
 
-  --fs-h1:  #{clamped(50px, 150px)};
+  --fs-h1:  #{clamped(40px, 160px)};
   --fs-h2:  #{clamped(35px, 72px)};
   --fs-h3:  #{clamped(20.64px, 31.2px)};
   --fs-h4:  #{clamped(17.4px, 24px)};
@@ -145,7 +145,7 @@ ul, ol { list-style: none; }
 }
 
 /* ── Grid scale ──────────── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   :root {
     --grid-columns: 4;
     --grid-gap: 16px;
