@@ -27,6 +27,7 @@ export const INTRO = {
     title: 'Loam Blends',
     subtitle: 'Social Media Experience',
     bg: cloudinaryUrl('image', 'F-3_uunmgt', 'q_auto:good/f_auto'),
+    video: cloudinaryUrl('video', 'hf_20260611_231757_26018a0c-efd2-4af3-a5a5-1c4fe405b2dd_efvzeg', 'q_auto/f_auto'),
   },
   {
     id: 2,
