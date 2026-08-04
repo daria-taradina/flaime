@@ -1,0 +1,80 @@
+/* components/media/ParallaxCollage.module.css */
+.collage {
+  position: relative;
+  width: 100%;
+  min-height: clamp(560px, 60vw, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktopLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.text {
+  position: relative;
+  z-index: 5;
+  composes: h1 from global;
+  max-width: var(--h1-w);
+  text-align: center;
+}
+
+.card {
+  position: absolute;
+  overflow: hidden;
+  aspect-ratio: 9 / 16;
+  will-change: transform;
+}
+
+.cardBack {
+  z-index: 1;
+}
+
+.cardFront {
+  z-index: 10;
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.4),
+    0 8px 16px -6px rgba(0, 0, 0, 0.25);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobileGrid {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .desktopLayer {
+    display: none;
+  }
+  .text {
+    display: none;
+  }
+
+  .collage {
+    min-height: auto;
+    display: block;
+  }
+
+  .mobileGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-13);
+    margin-top: var(--space-lg);
+  }
+
+  .mobileCard {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+  }
+}

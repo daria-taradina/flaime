@@ -1,19 +1,12 @@
-/** True if value looks like a hex color ('#12181a') rather than a URL/path. */
+// utils/media.ts
 export function isColor(value: unknown): value is string {
   return typeof value === 'string' && value.startsWith('#');
 }
 
-/**
- * Returns the right inline style for a "bg" field that can be either a
- * placeholder color or a real image URL — used by any card-style component
- * (DragGallery, VideoSlider, SelectedWorkCard) so they all follow the same
- * rule instead of each rolling its own url-vs-color check.
- */
 export function backgroundStyle(
-  value?: string,
-  fallback: string = '#1a1a1a'
+  value?: string
 ): { backgroundColor: string } | { backgroundImage: string } {
-  if (!value) return { backgroundColor: fallback };
+  if (!value) return { backgroundColor: 'var(--section-card-bg)' };
   return isColor(value)
     ? { backgroundColor: value }
     : { backgroundImage: `url(${value})` };
