@@ -1,18 +1,18 @@
 import FadeIn from '@/components/ui/FadeIn';
-import DragGallery from '@/components/media/DragGallery';
+import CircularDragGallery from '@/components/media/CircularDragGallery';
 import Section from '@/components/layout/Section';
 import { GALLERY_ITEMS } from '@/data/home';
-import styles from './SelectedWorks.module.css';
+import styles from './Featured.module.css';
 
-export default function SelectedWorks() {
+export default function Featured() {
   return (
-    <Section theme="light" grid={false} className={styles.works}>
+    <Section theme="light" grid={false} className={styles.featured}>
       <div className="pageBound">
         <FadeIn>
-          <DragGallery
+          <CircularDragGallery
             items={GALLERY_ITEMS}
-            ratio="9 / 16"
             showOverlay={false}
+            playVideo="active"
           />
         </FadeIn>
       </div>
