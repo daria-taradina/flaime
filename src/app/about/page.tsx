@@ -1,10 +1,12 @@
 import { AboutHero } from '@/sections/about/AboutHero';
+import { AboutHeroInverse } from '@/sections/about/AboutHeroInverse';
 import Intro from '@/sections/home/Intro';
 
 export default function Home() {
   return (
     <main>      
-      <AboutHero />
+      <AboutHeroInverse />
+      {/*<AboutHero />*/}
       <Intro />
     </main>
   );
