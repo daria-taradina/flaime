@@ -1,13 +1,13 @@
-
 import {
   CSSProperties,
-  ElementType,
   HTMLAttributes,
   ReactNode,
 } from 'react';
 
+type SectionTag = 'section' | 'div' | 'article' | 'header' | 'footer';
+
 type SectionProps = {
-  as?: ElementType;
+  as?: SectionTag;
   theme?: 'dark' | 'light';
   bg?: string;
   grid?: boolean;
