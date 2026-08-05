@@ -1,13 +1,25 @@
 // components/media/ParallaxCollage.types.ts
+
 export interface ParallaxCollageItem {
-  id: string | number;
-  src: string; // image/video URL, or hex color as a placeholder
-  isVideo?: boolean;
+  id: number | string;
+
+  src: string;
   alt?: string;
+  isVideo?: boolean;
+
   layer: 'front' | 'back';
-  top: string;
+
+  bottom: string;
   left?: string;
   right?: string;
+
   width: string;
-  speed?: number;
+
+  /**
+   * Total vertical travel distance.
+   * Larger = longer movement through viewport.
+   */
+  travel?: number;
+
+  
 }

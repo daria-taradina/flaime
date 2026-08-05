@@ -1,87 +1,103 @@
 // components/media/ParallaxCollage.tsx
+
 'use client';
 
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { isColor } from '@/utils/media';
-import type { ParallaxCollageItem } from './ParallaxCollage.types';
+
 import styles from './ParallaxCollage.module.css';
+import type { ParallaxCollageItem } from './ParallaxCollage.types';
+import { isColor } from '@/utils/media';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-interface ParallaxCollageProps {
+interface Props {
   items: ParallaxCollageItem[];
   text: React.ReactNode;
   className?: string;
 }
 
-const DEFAULT_SPEED = { front: 110, back: 45 };
-
-// real <img>/<video> tags so a failed load can actually fire onError —
-// a CSS background-image url() has no equivalent failure event
 function CollageMedia({ item }: { item: ParallaxCollageItem }) {
   const [failed, setFailed] = useState(false);
+
   const showFallback = isColor(item.src) || failed;
 
   if (showFallback) {
     return (
       <div
         className={styles.media}
-        style={{ backgroundColor: isColor(item.src) ? item.src : 'var(--section-card-bg)' }}
-        role="img"
-        aria-label={item.alt || ''}
+        style={{
+          background: isColor(item.src)
+            ? item.src
+            : 'var(--section-card-bg)',
+        }}
       />
     );
   }
 
-  return item.isVideo ? (
-    <video
-      className={styles.media}
-      src={item.src}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      onError={() => setFailed(true)}
-    />
-  ) : (
+  if (item.isVideo) {
+    return (
+      <video
+        className={styles.media}
+        src={item.src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+
+  return (
     <img
       className={styles.media}
       src={item.src}
-      alt={item.alt || ''}
+      alt={item.alt ?? ''}
       onError={() => setFailed(true)}
     />
   );
 }
 
-export default function ParallaxCollage({ items, text, className = '' }: ParallaxCollageProps) {
+export default function ParallaxCollage({
+  items,
+  text,
+  className = '',
+}: Props) {
+
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useLayoutEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || !containerRef.current) return;
+    if (!containerRef.current) return;
+
+    const prefersReduced =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      cardRefs.current.forEach((el, i) => {
+      refs.current.forEach((el, index) => {
         if (!el) return;
-        const item = items[i];
-        const speed = item.speed ?? DEFAULT_SPEED[item.layer];
+
+        const item = items[index];
 
         gsap.fromTo(
           el,
-          { yPercent: -speed / 2 },
           {
-            yPercent: speed / 2,
+            y: (item.travel ?? 900) / 2,
+          },
+          {
+            y: -(item.travel ?? 900) / 2,
             ease: 'none',
             scrollTrigger: {
               trigger: containerRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
+              start: 'top top',
+              end: 'bottom bottom',
               scrub: true,
             },
           }
@@ -90,32 +106,87 @@ export default function ParallaxCollage({ items, text, className = '' }: Paralla
     }, containerRef);
 
     return () => ctx.revert();
+
   }, [items]);
 
-  return (
-    <div ref={containerRef} className={`${styles.collage} ${className}`.trim()}>
-      <div className={styles.desktopLayer}>
-        {items.map((item, i) => (
-          <div
-            key={item.id}
-            ref={(el) => { cardRefs.current[i] = el; }}
-            className={`${styles.card} ${item.layer === 'front' ? styles.cardFront : styles.cardBack}`}
-            style={{ top: item.top, left: item.left, right: item.right, width: item.width }}
-          >
-            <CollageMedia item={item} />
-          </div>
-        ))}
-      </div>
 
-      <div className={styles.text}>{text}</div>
+  const back = items.filter(x => x.layer === 'back');
+  const front = items.filter(x => x.layer === 'front');
+
+  let refIndex = 0;
+
+  return (
+    <div
+      ref={containerRef}
+      className={`${styles.collage} ${className}`}
+    >
+
+      <div className={styles.stage}>
+
+        <div className={styles.backLayer}>
+          {back.map(item => {
+            const index = refIndex++;
+
+            return (
+              <div
+                key={item.id}
+                ref={el => {
+                  refs.current[index] = el;
+                }}
+                className={styles.card}
+                style={{
+                  bottom: item.bottom,
+                  left: item.left,
+                  right: item.right,
+                  width: item.width,
+                }}
+              >
+                <CollageMedia item={item}/>
+              </div>
+            );
+          })}
+        </div>
+
+
+        <div className={styles.text}>
+          {text}
+        </div>
+
+
+        <div className={styles.frontLayer}>
+          {front.map(item => {
+            const index = refIndex++;
+
+            return (
+              <div
+                key={item.id}
+                ref={el => {
+                  refs.current[index] = el;
+                }}
+                className={`${styles.card} ${styles.frontCard}`}
+                style={{
+                  bottom: item.bottom,
+                  left: item.left,
+                  right: item.right,
+                  width: item.width,
+                }}
+              >
+                <CollageMedia item={item}/>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
 
       <div className={styles.mobileGrid}>
-        {items.map((item) => (
+        {items.map(item => (
           <div key={item.id} className={styles.mobileCard}>
-            <CollageMedia item={item} />
+            <CollageMedia item={item}/>
           </div>
         ))}
       </div>
+
     </div>
   );
 }

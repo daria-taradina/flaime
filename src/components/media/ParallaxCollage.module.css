@@ -1,80 +1,124 @@
 /* components/media/ParallaxCollage.module.css */
+
 .collage {
+  height: 280vh;
   position: relative;
-  width: 100%;
-  min-height: clamp(560px, 60vw, 900px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.desktopLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+
+.stage {
+  position: sticky;
+  top: 0;
+
+  height: 100vh;
+
+  max-width: var(--grid-max-width);
+  margin-inline: auto;
+
+  overflow: hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
+
+
+.backLayer,
+.frontLayer {
+  position:absolute;
+  inset:0;
+}
+
+
+.backLayer {
+  z-index:1;
+}
+
+
+.frontLayer {
+  z-index:10;
+}
+
 
 .text {
-  position: relative;
-  z-index: 5;
-  composes: h1 from global;
-  max-width: var(--h1-w);
-  text-align: center;
+  position:absolute;
+  inset:0;
+
+  display:grid;
+  place-items:center;
+
+  z-index:5;
+
+  pointer-events:none;
 }
+
+
+.text h1 {
+  width:min(90vw,1100px);
+  text-align:center;
+  line-height:.95;
+}
+
 
 .card {
-  position: absolute;
-  overflow: hidden;
-  aspect-ratio: 9 / 16;
-  will-change: transform;
+  position:absolute;
+
+  aspect-ratio:3 / 4;
+
+  overflow:hidden;
+
+  max-width: 23.3vmax;
+
+  will-change:transform;
 }
 
-.cardBack {
-  z-index: 1;
-}
 
-.cardFront {
-  z-index: 10;
+.frontCard {
   box-shadow:
-    0 20px 40px -12px rgba(0, 0, 0, 0.4),
-    0 8px 16px -6px rgba(0, 0, 0, 0.25);
+    0 40px 80px rgba(0,0,0,.25),
+    0 15px 30px rgba(0,0,0,.2);
 }
+
 
 .media {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
 }
+
 
 .mobileGrid {
-  display: none;
+  display:none;
 }
 
-@media (max-width: 1024px) {
-  .desktopLayer {
-    display: none;
+
+@media(max-width:1024px){
+
+  .stage {
+    max-width:none;
   }
+
+
+  .backLayer,
+  .frontLayer,
   .text {
-    display: none;
+    display:none;
   }
+
 
   .collage {
-    min-height: auto;
-    display: block;
+    height:auto;
   }
+
 
   .mobileGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--gap-13);
-    margin-top: var(--space-lg);
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:var(--gap-13);
   }
 
-  .mobileCard {
-    position: relative;
-    aspect-ratio: 9 / 16;
-    overflow: hidden;
-  }
 }
