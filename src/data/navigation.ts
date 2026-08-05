@@ -8,9 +8,9 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/work', label: 'Work' },
+  { to: '/', label: 'Home', end: true },  
   { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 export interface SocialLink {

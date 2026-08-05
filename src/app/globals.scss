@@ -42,6 +42,7 @@
   --fs-h3:  #{clamped(20.64px, 31.2px)};
   --fs-h4:  #{clamped(17.4px, 24px)};
   --fs-p:   #{clamped(16.3px, 21.6px)};
+  --fs-p2:   #{clamped(13px, 14.4px)};
   --fs-big-btn: #{clamped(14.7px, 17px)};
   
   /* Line-height */
@@ -98,6 +99,7 @@
 
   --radius-sm: 4px;
   --radius-md: 10px;
+  --radius-xl: 18px;
   --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
