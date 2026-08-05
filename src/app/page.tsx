@@ -1,3 +1,4 @@
+import HeroParallax from '@/sections/home/HeroParallax';
 import Hero from '@/sections/home/Hero';
 import Intro from '@/sections/home/Intro';
 import Services from '@/sections/home/Services';
@@ -8,7 +9,8 @@ import Cta from '@/sections/home/Cta';
 export default function Home() {
   return (
     <main>
-      <Hero />
+      <HeroParallax />
+      {/*<Hero />*/}
       <Intro />
       <Services />
       <SelectedWorks />

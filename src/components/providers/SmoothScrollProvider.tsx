@@ -19,6 +19,8 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
+      syncTouch: true,      // sync with native touch instead of overriding it
+      syncTouchLerp: 0.1,
     });
     lenisRef.current = lenis;
 

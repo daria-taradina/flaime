@@ -25,3 +25,8 @@ export const STAGGER_DELAY = 0.12;
 // ── Breakpoints (matches globals.scss media queries) ─────────
 export const BP_MOBILE = 1024;
 export const MOBILE_QUERY = `(max-width: ${BP_MOBILE}px)`;
+
+export function heroScrubFrameUrl(index: number, width: number) {
+  const padded = String(index + 1).padStart(3, '0'); // frames are 1-indexed on disk
+  return cloudinaryUrl('image', `hero-scrub/frame_${padded}`, `f_auto,q_auto:eco,w_${width}`);
+}
