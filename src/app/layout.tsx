@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@/app/globals.scss';
 import '@/styles/section-theme.css';
 import Navbar from '@/components/layout/Navbar';
+import NavbarGlass from '@/components/layout/NavbarGlass';
 import Footer from '@/components/layout/Footer';
 import SmoothScrollProvider from '@/components/providers/SmoothScrollProvider';
 
@@ -19,7 +20,8 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth">
       <body>
         <SmoothScrollProvider>
-          <Navbar />
+          <NavbarGlass />
+          {/*<Navbar />*/}
           {children}
           <Footer />
         </SmoothScrollProvider>
