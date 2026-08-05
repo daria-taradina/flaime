@@ -3,11 +3,11 @@
   grid-column: 1 / 13;
 }
 
-.cta {
+/*.cta {
   grid-column: 19 / 27;
   align-self: end;
   justify-self: end;
-}
+}*/
 
 .cards {
   grid-column: 1 / -1;
@@ -18,13 +18,13 @@
   .text {
     grid-column: 1 / -1;
   }
-  .cta {
+  /*.cta {
     grid-column: 1 / -1;
     order: 3;
     justify-self: start;
     width: 100%;
     margin-top: 4rem;
-  }
+  }*/
   .cards {
     grid-column: 1 / -1;
     order: 2;

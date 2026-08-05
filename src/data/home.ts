@@ -46,6 +46,36 @@ export const INTRO = {
 ],
 };
 
+// ── Intro 2 ───────────────────────────────────────────────────
+export const INTRO_FEATURED = {
+  text: 'Flaime Studio is a creative agency helping product-based brands communicate their value through design and creative direction. Every project is built on a deep understanding of the brand, allowing us to create solutions that address specific business challenges.',
+  cta: { label: 'See More Work', to: '/work' },
+  cards: [
+    {
+      id: 1,
+      slug: 'loam-blends',
+      title: 'Loam Blends',
+      services: ['Social Media Design', 'AI Photography'],
+      bg: cloudinaryUrl('image', 'F-3_uunmgt', 'q_auto:good/f_auto'),
+      video: cloudinaryUrl('video', 'hf_20260611_231757_26018a0c-efd2-4af3-a5a5-1c4fe405b2dd_efvzeg', 'q_auto/f_auto'),
+    },
+    {
+      id: 2,
+      slug: 'milave-haircare',
+      title: 'Milave Haircare',
+      services: ['Social Media Design', 'Website Experience'],
+      bg: cloudinaryUrl('image', 'hf_20260403_215802_26dda678-2f90-4fe0-b5d7-39a55f0f377b_1_jgsrxl', 'q_auto:good/f_auto'),
+    },
+    {
+      id: 3,
+      slug: 'jlux-label',
+      title: 'JLux Label',
+      services: ['Fashion AI Photography'],
+      bg: cloudinaryUrl('image', '6db9025c_nano_2K_f9vofx', 'q_auto:eco/f_auto'),
+    },
+  ],
+};
+
 // ── Gallery (Selected Works slider) ─────────────────────────
 // Explicitly typed as GalleryItem[] — without this, TS infers `type` as
 // plain `string` from the object literals below, which is too wide for
