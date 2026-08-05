@@ -38,17 +38,17 @@
   --fs-big-btn: #{clamped(20px, 26px)};*/
 
   --fs-h1:  #{clamped(40px, 160px)};
-  --fs-h2:  #{clamped(35px, 72px)};
+  --fs-h2:  #{clamped(30px, 72px)};
   --fs-h3:  #{clamped(20.64px, 31.2px)};
   --fs-h4:  #{clamped(17.4px, 24px)};
   --fs-p:   #{clamped(16.3px, 21.6px)};
-  --fs-p2:   #{clamped(13px, 14.4px)};
+  --fs-p2:   #{clamped(13px, 18.4px)};
   --fs-big-btn: #{clamped(14.7px, 17px)};
   
   /* Line-height */
   --lh-global: 1;
   --lh-p:   #{clamped(22px, 38px)};
-  --lh-p2:  #{clamped(21px, 30px)};
+  --lh-p2:  1.1;
  
   /* Letter-spacing */
   --ls-5: -0.05em;        /* h1, p2 */

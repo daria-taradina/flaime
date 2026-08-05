@@ -55,7 +55,7 @@
 /* ── SECTION LABEL ─────────────────────────────────────── */
 
 .section-label {
-  font-size: var(--fs-h3);
+  font-size: var(--fs-p2);
   color: var(--section-muted);
   text-transform: uppercase;
 }

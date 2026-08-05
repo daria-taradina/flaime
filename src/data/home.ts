@@ -96,6 +96,65 @@ export const SERVICES_BLURB =
   "With a blend of creativity, strategy, and design skills, we help ideas come to life. " +
   "We treat our clients like partners and our work like craft. ";
 
+/**
+ * Services — canonical list used by Home services section and Contact form chips.
+ */
+export const SERVICES = [
+  'Web Design',
+  'Visual Identity',
+  'Packaging Design',
+  'Social Media Assets',
+  'AI-Generated Content',
+  'Motion Design',
+];
+
+/**
+ * Services (alt layout) — numbered row list, used by ServicesAlt.
+ * Combines Visual Identity + Packaging into one category, and
+ * relabels Web Design to reflect that build/dev is part of the offer.
+ */
+export const SERVICES_ALT = [
+  {
+    title: 'Web Design & Dev',
+    description:
+      'We design websites that give your products the space they deserve. ' + 
+      'Every project is tailored to your business, with a strong focus on usability, ' + 
+      'responsive layouts, and a visual style that feels consistent from the first page to the last.',
+  },
+  {
+    title: 'Visual Identity',
+    description:
+      'We create visual identity systems that define how your brand ' + 
+      'looks across every touchpoint. A consistent identity helps your ' +
+      'business become more recognizable and ensures every piece of ' +
+      'communication feels connected.',
+  },
+  {
+    title: 'Social Media',
+    description:
+      'We design social media content that matches the rest of your ' +
+      'brand and fits naturally into your marketing. ' +
+      'Consistent visuals help your products feel more recognizable ' +
+      'and make your content easier to maintain over time.',
+  },
+  {
+    title: 'AI-Generated Content',
+    description:
+      'We create AI-generated visuals tailored to your products ' +
+      'and creative direction. This gives you high-quality imagery ' +
+      'for your website, advertising, and campaigns without the cost ' +
+      'and limitations of traditional photography.',
+  },
+  {
+    title: 'Motion Design',
+    description:
+      'We create motion graphics that bring movement to your digital ' +
+      'content and brand assets. Animation helps capture attention, ' +
+      'highlight important details, and make your visual content feel ' +
+      'more dynamic.',
+  },
+];
+
 // ── Process ─────────────────────────────────────────────────
 export const PROCESS = {
   tagline: 'Turning creative ideas into\nmemorable brand experiences.',

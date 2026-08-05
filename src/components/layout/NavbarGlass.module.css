@@ -71,7 +71,7 @@
 .navLink::after {
   content: '';
   position: absolute;
-  left: 0; bottom: 1px;      /* hairline offset, intentionally fixed */
+  left: 0; bottom: -3px;      /* hairline offset, intentionally fixed */
   width: 0; height: 1px;      /* hairline, intentionally fixed */
   background: var(--clr-accent);
   transition: width 0.46s cubic-bezier(0.22, 1, 0.36, 1);

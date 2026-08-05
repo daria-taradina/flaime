@@ -3,10 +3,9 @@
 import { useState, useEffect, useRef } from 'react';
 import FadeIn from '@/components/ui/FadeIn';
 import Section from '@/components/layout/Section';
-import { SERVICES } from '@/data/services';
 import { MOBILE_QUERY } from '@/utils/constants';
 import styles from './Services.module.css';
-import { SERVICES_BLURB } from '@/data/home';
+import { SERVICES, SERVICES_BLURB } from '@/data/home';
 
 export default function Services() {
   const [active, setActive] = useState<number | null>(null);

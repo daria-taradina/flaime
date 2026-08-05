@@ -1,0 +1,81 @@
+.servicesAlt {
+  /* no root-level overrides needed yet — reserved for future tuning */
+}
+
+.label {
+  grid-column: 1 / 13;
+  text-align: left;
+  padding-bottom: 2rem;
+}
+
+.blurb {
+  grid-column: 1 / 13;
+  composes: h4 from global;
+  margin-inline-end: auto;
+  padding-bottom: 4rem;
+}
+
+.list {
+  grid-column: 1 / -1;
+}
+
+.list ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  align-items: start;
+  padding-block: var(--space-md);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.row:first-child {
+  border-top: 1px solid var(--clr-border);
+}
+
+.number {
+  grid-column: 1 / 2;
+  color: var(--clr-muted);
+}
+
+.title {
+  grid-column: 2 / 15;
+  composes: h2 from global;
+  text-transform: uppercase;
+  
+}
+
+.description {
+  grid-column: 17 / -1;
+  composes: p2 from global;
+  color: var(--clr-muted);
+  padding-top: var(--space-xs);
+}
+
+@media (max-width: 1024px) {
+  .label,
+  .blurb,
+  .list {
+    grid-column: 1 / -1;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-xs);
+  }
+
+  .number,
+  .title,
+  .description {
+    grid-column: 1 / -1;
+  }
+
+  .title {
+    white-space: normal;
+  }
+}
