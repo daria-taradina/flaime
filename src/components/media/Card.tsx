@@ -101,7 +101,7 @@ export default function Card({ item }: CardProps) {
 
         <div className={styles.label}>
           <span className={styles.title}>{item.title}</span>
-          {item.subtitle && <span className={styles.subtitle}>{item.subtitle}</span>}
+          {/*{item.subtitle && <span className={styles.subtitle}>{item.subtitle}</span>}*/}
         </div>
       </Link>
 
