@@ -1,12 +1,10 @@
-import { AboutHero } from '@/sections/about/AboutHero';
-import { AboutHeroInverse } from '@/sections/about/AboutHeroInverse';
-import Intro from '@/sections/home/Intro';
+// about/page.tsx
 
-export default function Home() {
+import Intro from '@/sections/about/Intro';
+
+export default function About() {
   return (
     <main>      
-      <AboutHeroInverse />
-      {/*<AboutHero />*/}
       <Intro />
     </main>
   );

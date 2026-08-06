@@ -1,0 +1,124 @@
+/* components/media/ParallaxCollage.module.css */
+
+.collage {
+  height: 280vh;
+  position: relative;
+}
+
+
+.stage {
+  position: sticky;
+  top: 0;
+
+  height: 100vh;
+
+  max-width: var(--grid-max-width);
+  margin-inline: auto;
+
+  overflow: hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+.backLayer,
+.frontLayer {
+  position:absolute;
+  inset:0;
+}
+
+
+.backLayer {
+  z-index:1;
+}
+
+
+.frontLayer {
+  z-index:10;
+}
+
+
+.text {
+  position:absolute;
+  inset:0;
+
+  display:grid;
+  place-items:center;
+
+  z-index:5;
+
+  pointer-events:none;
+}
+
+
+.title {
+  composes: h3 from global;
+  text-align: center;
+  width: min(90vw, 700px);   /* tighter than 1100px — this is paragraph measure, not headline width */
+  margin-inline: auto;
+}
+
+.card {
+  position:absolute;
+
+  aspect-ratio:3 / 4;
+
+  overflow:hidden;
+
+  max-width: 23.3vmax;
+
+  will-change:transform;
+}
+
+
+.frontCard {
+  box-shadow:
+    0 40px 80px rgba(0,0,0,.25),
+    0 15px 30px rgba(0,0,0,.2);
+}
+
+
+.media {
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+
+.mobileGrid {
+  display:none;
+}
+
+
+@media(max-width:1024px){
+
+  .stage {
+    max-width:none;
+  }
+
+
+  .backLayer,
+  .frontLayer,
+  .text {
+    display:none;
+  }
+
+
+  .collage {
+    height:auto;
+  }
+
+
+  .mobileGrid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:var(--gap-13);
+  }
+
+}
