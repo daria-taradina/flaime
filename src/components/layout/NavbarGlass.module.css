@@ -115,7 +115,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
+  gap: var(--space-xl);
   background: rgba(13,13,13,0.98);
   backdrop-filter: blur(12px);
   opacity: 0;
@@ -128,7 +128,7 @@
 }
 .mobileNav .navLink {
   font-size: var(--fs-h4);
-  padding: var(--space-md);
+  padding: var(--space-xs);
 }
 
 @media (max-width: 1024px) {
