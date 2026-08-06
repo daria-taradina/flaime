@@ -139,17 +139,19 @@ export const SERVICES_ALT = [
   {
     title: 'Web Design & Dev',
     description:
-      'We design websites that give your products the space they deserve. ' + 
-      'Every project is tailored to your business, with a strong focus on usability, ' + 
+      'We design websites that give your products the space they deserve. ' +
+      'Every project is tailored to your business, with a strong focus on usability, ' +
       'responsive layouts, and a visual style that feels consistent from the first page to the last.',
+    pills: ['Custom Websites', 'Responsive Design', 'CMS Integration', 'E-Commerce'],
   },
   {
     title: 'Visual Identity',
     description:
-      'We create visual identity systems that define how your brand ' + 
+      'We create visual identity systems that define how your brand ' +
       'looks across every touchpoint. A consistent identity helps your ' +
       'business become more recognizable and ensures every piece of ' +
       'communication feels connected.',
+    pills: ['Logo Design', 'Brand Guidelines', 'Packaging Design', 'Brand Collateral'],
   },
   {
     title: 'Social Media',
@@ -158,6 +160,7 @@ export const SERVICES_ALT = [
       'brand and fits naturally into your marketing. ' +
       'Consistent visuals help your products feel more recognizable ' +
       'and make your content easier to maintain over time.',
+    pills: ['Content Design', 'Templates & Systems', 'Campaign Assets'],
   },
   {
     title: 'AI-Generated Content',
@@ -166,6 +169,7 @@ export const SERVICES_ALT = [
       'and creative direction. This gives you high-quality imagery ' +
       'for your website, advertising, and campaigns without the cost ' +
       'and limitations of traditional photography.',
+    pills: ['AI Photography', 'Product Renders', 'Campaign Visuals'],
   },
   {
     title: 'Motion Design',
@@ -174,6 +178,7 @@ export const SERVICES_ALT = [
       'content and brand assets. Animation helps capture attention, ' +
       'highlight important details, and make your visual content feel ' +
       'more dynamic.',
+    pills: ['Social Animations', 'Product Motion', 'Video Editing'],
   },
 ];
 

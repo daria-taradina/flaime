@@ -43,11 +43,73 @@
   color: var(--section-muted);
 }
 
-.title {
+.titleCol {
   grid-column: 2 / 15;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  text-align: left;
+  cursor: default; /* desktop default: not clickable, hover does the work */
+}
+
+.title {
   composes: h2 from global;
+  color: var(--section-fg);
   text-transform: uppercase;
-  
+}
+
+.chevron {
+  composes: h3 from global;
+  flex-shrink: 0;
+  font-weight: 200;
+  color: var(--section-fg);
+  transition: transform var(--transition);
+
+  /* hidden by default — shown only on touch devices via mobile query below */
+  display: none;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.pillsBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--transition);
+}
+
+.pillsInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding-top: var(--space-sm);
+  padding-bottom: var(--space-xs);
+}
+
+.servicePill {
+  composes: p2 from global;
+  padding: .5rem .9rem;
+  white-space: nowrap;
+  color: var(--section-fg);
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .description {
@@ -55,6 +117,28 @@
   composes: p2 from global;
   color: var(--section-muted);
   padding-top: var(--space-xs);
+}
+
+/* Devices with real hover (desktop/trackpad): reveal on row hover */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .pillsBody {
+    grid-template-rows: 1fr;
+  }
+}
+
+/* Touch devices: chevron + tap-to-open takes over, hover is meaningless */
+@media (hover: none), (pointer: coarse) {
+  .chevron {
+    display: block;
+  }
+
+  .titleHeader {
+    cursor: pointer;
+  }
+
+  .pillsBody[data-open='true'] {
+    grid-template-rows: 1fr;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -70,12 +154,8 @@
   }
 
   .number,
-  .title,
+  .titleCol,
   .description {
     grid-column: 1 / -1;
-  }
-
-  .title {
-    white-space: normal;
   }
 }
