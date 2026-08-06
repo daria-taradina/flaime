@@ -12,7 +12,7 @@
   grid-column: 1 / 13;
   composes: h4 from global;
   margin-inline-end: auto;
-  padding-bottom: 4rem;
+  padding-bottom: 5rem;
 }
 
 .list {
@@ -31,16 +31,16 @@
   column-gap: var(--grid-gap);
   align-items: start;
   padding-block: var(--space-md);
-  border-bottom: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--section-muted);
 }
 
 .row:first-child {
-  border-top: 1px solid var(--clr-border);
+  border-top: 1px solid var(--section-muted);
 }
 
 .number {
   grid-column: 1 / 2;
-  color: var(--clr-muted);
+  color: var(--section-muted);
 }
 
 .title {
@@ -53,7 +53,7 @@
 .description {
   grid-column: 17 / -1;
   composes: p2 from global;
-  color: var(--clr-muted);
+  color: var(--section-muted);
   padding-top: var(--space-xs);
 }
 

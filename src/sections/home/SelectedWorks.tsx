@@ -6,7 +6,7 @@ import styles from './SelectedWorks.module.css';
 
 export default function SelectedWorks() {
   return (
-    <Section theme="light" grid={false} className={styles.works}>
+    <Section theme="dark" grid={false} className={styles.works}>
       <FadeIn>
         <DragGallery items={GALLERY_ITEMS} ratio="9 / 16" showOverlay={false} />
       </FadeIn>

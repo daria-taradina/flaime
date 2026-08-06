@@ -8,11 +8,11 @@
 }
 
 .processRow {
-  border-bottom: 1px solid var(--section-fg);
+  border-bottom: 1px solid var(--section-muted);
 }
 
 .processRow:first-child {
-  border-top: 1px solid var(--section-fg);
+  border-top: 1px solid var(--section-muted);
 }
 
 .processHeader {
@@ -58,7 +58,8 @@
 }
 
 .stepBody {
-  composes: p from global;
+  composes: p2 from global;
+  color: var(--section-muted);
   padding-block: var(--pad-15) var(--pad-30); 
   padding-right: 4vmax;
 }

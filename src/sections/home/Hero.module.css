@@ -73,7 +73,7 @@
 }
 
 .heroDesc {
-  composes: h4 from global;
+  composes: p from global;
   text-align: justify;
   color: color-mix(in srgb, var(--clr-white) 80%, transparent);
 }
