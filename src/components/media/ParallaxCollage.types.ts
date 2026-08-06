@@ -21,5 +21,9 @@ export interface ParallaxCollageItem {
    */
   travel?: number;
 
-  
+  /**
+   * Overrides applied on mobile viewports.
+   * Anything not specified falls back to the desktop value.
+   */
+  mobile?: Partial<Pick<ParallaxCollageItem, 'bottom' | 'left' | 'right' | 'width' | 'travel'>>;
 }
