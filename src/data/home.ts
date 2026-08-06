@@ -113,10 +113,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
 ];
 
 export const SERVICES_BLURB =
-  "We create complete visual systems where every element works together to support the same brand experience. " +
-  "From branding identity to social media content, every piece is designed to fit into the bigger picture.  " +
-  "With a blend of creativity, strategy, and design skills, we help ideas come to life. " +
-  "We treat our clients like partners and our work like craft. ";
+  'We create complete visual systems where every element works ' +
+  'together to support the same brand experience. ' +
+  'From branding identity to social media content, every piece is ' +
+  'designed to fit into the bigger picture.';
 
 /**
  * Services — canonical list used by Home services section and Contact form chips.

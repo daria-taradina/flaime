@@ -10,9 +10,9 @@
 
 .blurb {
   grid-column: 1 / 13;
-  composes: h4 from global;
+  composes: h3 from global;
   margin-inline-end: auto;
-  padding-bottom: 5rem;
+  padding-bottom: 7rem;
 }
 
 .list {

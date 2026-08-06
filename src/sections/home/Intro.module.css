@@ -1,6 +1,5 @@
 .text {
   composes: h3 from global;
-  font-weight: 300;
   grid-column: 1 / 13;
 }
 
