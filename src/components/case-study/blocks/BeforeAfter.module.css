@@ -1,0 +1,15 @@
+/* components/case-study/blocks/BeforeAfter.module.css */
+
+.beforeAfter {
+  display: flex;
+}
+
+.inner {
+  grid-column: 8 / 19;
+}
+
+@media (max-width: 1024px) {
+  .inner {
+    grid-column: 1 / -1;
+  }
+}

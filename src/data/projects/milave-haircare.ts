@@ -45,5 +45,18 @@ export const milaveHaircare: CaseStudyData = {
         ],
       },
     },
+
+    {
+      type: 'beforeAfter',
+      props: {
+        before: cloudinaryUrl('image', 'd-10_geiek8', 'f_auto,q_auto'),
+        after: cloudinaryUrl('image', 'F-3_uunmgt', 'f_auto,q_auto'),
+        beforeAlt: 'Milave Haircare packaging before rebrand',
+        afterAlt: 'Milave Haircare packaging after rebrand',
+        beforeLabel: 'Before',
+        afterLabel: 'After',
+        caption: 'Packaging Redesign',
+      },
+    },
   ],
 };

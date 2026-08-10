@@ -1,5 +1,10 @@
 // components/case-study/types.ts
 
+import type { ComponentProps } from 'react';
+import type BeforeAfterCard from '@/components/media/BeforeAfterCard';
+
+export type BeforeAfterProps = ComponentProps<typeof BeforeAfterCard>;
+
 export interface HeroParallaxProps {
   title: string;
   tagline: string;
@@ -46,7 +51,8 @@ export type Block =
   | { type: 'brief'; props: BriefProps }
   | { type: 'breakdown'; props: BreakdownProps }
   | { type: 'gallery'; props: GalleryProps }
-  | { type: 'featureMedia'; props: FeatureMediaProps };
+  | { type: 'featureMedia'; props: FeatureMediaProps }
+  | { type: 'beforeAfter'; props: BeforeAfterProps };
 
 export interface CaseStudyData {
   slug: string;

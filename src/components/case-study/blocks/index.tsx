@@ -7,6 +7,7 @@ import Gallery from './Gallery';
 import FeatureMedia from './FeatureMedia';
 import Brief from './Brief';
 import type { Block } from '../types';
+import BeforeAfter from './BeforeAfter';
 
 export const blockRegistry: Record<Block['type'], ComponentType<any>> = {
   heroParallax: HeroParallax,
@@ -15,4 +16,5 @@ export const blockRegistry: Record<Block['type'], ComponentType<any>> = {
   breakdown: Breakdown,
   gallery: Gallery,
   featureMedia: FeatureMedia,
+  beforeAfter: BeforeAfter,
 };
