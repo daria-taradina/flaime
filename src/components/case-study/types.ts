@@ -12,6 +12,7 @@ export interface HeroStaticProps {
   tagline: string;
   image: string;
   imageAlt: string;
+  video?: string;
 }
 
 export type BriefPoint = {
