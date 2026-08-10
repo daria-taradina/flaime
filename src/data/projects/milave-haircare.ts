@@ -58,5 +58,34 @@ export const milaveHaircare: CaseStudyData = {
         caption: 'Packaging Redesign',
       },
     },
+
+    {
+      type: 'marquee',
+      props: {
+        items: [
+          { type: 'placeholder', color: '#EDE3D3', width: 1600, height: 2000, alt: 'Placeholder 1' },
+          { type: 'placeholder', color: '#C9D6C0', width: 1920, height: 1080, alt: 'Placeholder 2' },
+          { type: 'placeholder', color: '#D8C9E0', width: 1200, height: 1200, alt: 'Placeholder 3' },
+          { type: 'placeholder', color: '#E0CFC2', width: 1600, height: 1067, alt: 'Placeholder 4' },
+          { type: 'placeholder', color: '#C2D3E0', width: 1400, height: 1866, alt: 'Placeholder 5' },
+        ],
+        duration: 45,
+      },
+    },
+
+    {
+      type: 'masonry',
+      props: {
+        items: [
+          { type: 'placeholder', color: '#EDE3D3', width: 1600, height: 2000, alt: 'Placeholder 1' },
+          { type: 'placeholder', color: '#C9D6C0', width: 1920, height: 1080, alt: 'Placeholder 2' },
+          { type: 'placeholder', color: '#D8C9E0', width: 1200, height: 1200, alt: 'Placeholder 3' },
+          { type: 'placeholder', color: '#E0CFC2', width: 1600, height: 1067, alt: 'Placeholder 4' },
+          { type: 'placeholder', color: '#C2D3E0', width: 1400, height: 1866, alt: 'Placeholder 5' },
+          { type: 'placeholder', color: '#D3C2D8', width: 1600, height: 900, alt: 'Placeholder 6' },
+          { type: 'placeholder', color: '#C9CFE0', width: 1080, height: 1350, alt: 'Placeholder 7' },
+        ],
+      },
+    },
   ],
 };

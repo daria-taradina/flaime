@@ -2,7 +2,11 @@
 
 import type { ComponentProps } from 'react';
 import type BeforeAfterCard from '@/components/media/BeforeAfterCard';
+import type MarqueeGallery from '@/components/media/MarqueeGallery';
+import type MasonryGallery from '@/components/media/MasonryGallery';
 
+export type MasonryProps = ComponentProps<typeof MasonryGallery>;
+export type MarqueeProps = ComponentProps<typeof MarqueeGallery>;
 export type BeforeAfterProps = ComponentProps<typeof BeforeAfterCard>;
 
 export interface HeroParallaxProps {
@@ -52,7 +56,9 @@ export type Block =
   | { type: 'breakdown'; props: BreakdownProps }
   | { type: 'gallery'; props: GalleryProps }
   | { type: 'featureMedia'; props: FeatureMediaProps }
-  | { type: 'beforeAfter'; props: BeforeAfterProps };
+  | { type: 'beforeAfter'; props: BeforeAfterProps }
+  | { type: 'marquee'; props: MarqueeProps }
+  | { type: 'masonry'; props: MasonryProps };
 
 export interface CaseStudyData {
   slug: string;

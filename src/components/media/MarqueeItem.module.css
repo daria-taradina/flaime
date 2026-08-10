@@ -1,0 +1,61 @@
+/* components/media/MarqueeItem.module.css */
+
+.item {
+  position: relative;
+  flex-shrink: 0;
+
+  height: 100%;
+
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  background: var(--section-card-bg);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.playBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--clr-black, #111);
+  background: var(--clr-white);
+
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm, 0 8px 24px rgba(0, 0, 0, .18));
+
+  transform: translate(-50%, -50%);
+
+  cursor: pointer;
+
+  transition: transform .25s ease;
+}
+
+.item:hover .playBtn {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
