@@ -1,117 +1,47 @@
 // data/about.ts
 
-import type { ParallaxCollageItem } from '@/components/media/ParallaxCollage.types';
+import type { CollageColumn } from '@/components/media/ParallaxCollage.types';
 import { cloudinaryUrl } from '@/utils/constants';
+
+// 7 real images, cycled to fill 15 slots across the columns
+const COLLAGE_IMAGES = [
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/d-9_jrekkm.jpg',
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/6db9025c_nano_2K_f9vofx.jpg',
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229102/d-10_geiek8.jpg',
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228733/hf_20260403_215802_26dda678-2f90-4fe0-b5d7-39a55f0f377b_1_jgsrxl.png',
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228731/4f_feyshi.png',
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228730/f-2_uvhneb.jpg',
+  'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/a06b97ea_nano_2K_xy3svv.jpg',
+];
+
+const PALETTE = Array.from(
+  { length: 15 },
+  (_, i) => COLLAGE_IMAGES[i % COLLAGE_IMAGES.length]
+);
+
+function columnsFromPalette(colCount: number, directions: ('down' | 'up')[]): CollageColumn[] {
+  return Array.from({ length: colCount }, (_, i) => ({
+    id: i,
+    direction: directions[i],
+    images: PALETTE.filter((_, idx) => idx % colCount === i).map(src => ({ src })),
+  }));
+}
 
 export const ABOUT_INTRO = {
   text:
-    "In today's world, people have about five seconds to decide whether " +
-    "your brand is right for them. You don't get a second chance to make a first " +
-    "impression.  That's why we help you make the most of that opportunity by creating " + 
-    "a brand experience that communicates your value from the very first moment " +
-    "and gives people a reason to stay, explore, and remember who you are.",
+    "In today's world, people have about five seconds to decide whether your brand is right for them. " +
+    "You don't get a second chance to make a first impression." + 
+    "That's why we help you make the most of that opportunity by creating a brand experience that " +
+    "communicates your value from the very first moment and gives people a reason to stay, explore, " +
+    "and remember who you are.",    
 
-  cards: [
-    {
-      id: 1,
-      src: '#F5745D',
-      layer: 'front',
-      bottom: '-18%',
-      left: '8%',
-      width: '23%',
-      travel: 900,
-      mobile: { left: '2%', width: '38%', bottom: '-16%', travel: 500 },
-    },
+  text2:
+    "We help create content that goes beyond looking beautiful by expressing who you are and what your " +
+    "brand stands for — because people don't simply buy products anymore, they want to feel something " +
+    "that fits into their lives and gives them a reason to choose you over everything else.",
 
-    {
-      id: 2,
-      src: '#5DEBF5',
-      layer: 'front',
-      bottom: '8%',
-      right: '2%',
-      width: '23%',
-      travel: 1000,
-      mobile: { right: '4%', width: '34%', bottom: '5%', travel: 700 },
-    },
-
-    {
-      id: 3,
-      src: '#E35DF5',
-      layer: 'back',
-      bottom: '30%',
-      left: '5%',
-      width: '20%',
-      travel: 700,
-      mobile: { left: '15%', width: '30%', bottom: '30%', travel: 420 },
-    },
-
-    {
-      id: 4,
-      src: '#80F55D',
-      layer: 'back',
-      bottom: '45%',
-      right: '8%',
-      width: '22%',
-      travel: 600,
-      mobile: { right: '6%', width: '34%', bottom: '45%', travel: 800 },
-    },
-
-    {
-      id: 5,
-      src: '#5D6AF5',
-      layer: 'back',
-      bottom: '72%',
-      left: '13%',
-      width: '16%',
-      travel: 850,
-      mobile: { left: '3%', width: '28%', bottom: '53%', travel: 600 },
-    },
-
-    {
-      id: 6,
-      src: '#F5F05D',
-      layer: 'front',
-      bottom: '-42%',
-      left: '26%',
-      width: '16%',
-      travel: 1100,
-      mobile: { left: '30%', width: '26%', bottom: '-38%', travel: 650 },
-    },
-
-    /*{
-      id: 7,
-      src: '#FF0000',
-      layer: 'back',
-      bottom: '30%',
-      right: '25%',
-      width: '18%',
-      travel: 800,
-      mobile: { right: '20%', width: '26%', bottom: '15%', travel: 360 },
-    },*/
-
-    /*{
-      id: 8,
-      src: '#f5bd5d',
-      layer: 'front',
-      bottom: '20%',
-      left: '28%',
-      width: '17%',
-      travel: 1100,
-      mobile: { left: '30%', width: '26%', bottom: '-35%', travel: 650 },
-    },*/
-
-    {
-      id: 8,
-      src: '#f55dcf',
-      layer: 'front',
-      bottom: '-32%',
-      right: '12%',
-      width: '19%',
-      travel: 1100,
-      mobile: { right: '5%', width: '35%', bottom: '-29%', travel: 650 },
-    },
-
-  ] satisfies ParallaxCollageItem[],
+  columns: columnsFromPalette(5, ['down', 'up', 'down', 'up', 'down']),
+  mobileColumns: columnsFromPalette(3, ['down', 'up', 'down']),
 };
 
 export const ABOUT_MARGO = {

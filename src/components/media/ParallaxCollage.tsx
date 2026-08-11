@@ -1,5 +1,4 @@
 // components/media/ParallaxCollage.tsx
-
 'use client';
 
 import { useLayoutEffect, useRef, useState } from 'react';
@@ -7,7 +6,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import styles from './ParallaxCollage.module.css';
-import type { ParallaxCollageItem } from './ParallaxCollage.types';
+import type { CollageColumn, CollageColumnImage } from './ParallaxCollage.types';
 import { isColor } from '@/utils/media';
 
 if (typeof window !== 'undefined') {
@@ -17,39 +16,33 @@ if (typeof window !== 'undefined') {
 const MOBILE_QUERY = '(max-width: 767px)';
 
 interface Props {
-  items: ParallaxCollageItem[];
-  text: React.ReactNode;
+  columns: CollageColumn[];
+  mobileColumns?: CollageColumn[];
+  text: string;
+  text2?: string;
+  text3?: string;
+  travel?: number;
   className?: string;
 }
 
-function resolveItem(item: ParallaxCollageItem, isMobile: boolean): ParallaxCollageItem {
-  if (!isMobile || !item.mobile) return item;
-  return { ...item, ...item.mobile };
-}
-
-function CollageMedia({ item }: { item: ParallaxCollageItem }) {
+function ColumnMedia({ image }: { image: CollageColumnImage }) {
   const [failed, setFailed] = useState(false);
-
-  const showFallback = isColor(item.src) || failed;
+  const showFallback = isColor(image.src) || failed;
 
   if (showFallback) {
     return (
       <div
         className={styles.media}
-        style={{
-          background: isColor(item.src)
-            ? item.src
-            : 'var(--section-card-bg)',
-        }}
+        style={{ background: isColor(image.src) ? image.src : 'var(--section-card-bg)' }}
       />
     );
   }
 
-  if (item.isVideo) {
+  if (image.isVideo) {
     return (
       <video
         className={styles.media}
-        src={item.src}
+        src={image.src}
         autoPlay
         muted
         loop
@@ -63,56 +56,63 @@ function CollageMedia({ item }: { item: ParallaxCollageItem }) {
   return (
     <img
       className={styles.media}
-      src={item.src}
-      alt={item.alt ?? ''}
+      src={image.src}
+      alt={image.alt ?? ''}
       onError={() => setFailed(true)}
     />
   );
 }
 
 export default function ParallaxCollage({
-  items,
+  columns,
+  mobileColumns,
   text,
+  text2,
+  text3,
+  travel = 150,
   className = '',
 }: Props) {
-
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<Map<string | number, HTMLDivElement>>(new Map());
+  const columnRefs = useRef<Map<string | number, HTMLDivElement>>(new Map());
+  const trackRefs = useRef<Map<string | number, HTMLDivElement>>(new Map());
 
   const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
     const mql = window.matchMedia(MOBILE_QUERY);
     setIsMobile(mql.matches);
-
     const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mql.addEventListener('change', onChange);
-
     return () => mql.removeEventListener('change', onChange);
   }, []);
 
-  const resolved = items.map(item => resolveItem(item, isMobile));
+  const activeColumns = isMobile && mobileColumns ? mobileColumns : columns;
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
 
-    const prefersReduced =
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      resolved.forEach(item => {
-        const el = cardRefs.current.get(item.id);
-        if (!el) return;
+      activeColumns.forEach(column => {
+        const track = trackRefs.current.get(column.id);
+        const columnEl = columnRefs.current.get(column.id);
+        if (!track || !columnEl) return;
+
+        // Center the (taller, duplicated) track inside the shorter
+        // column at rest, then swing it by ±travel/2 on scroll — folded
+        // into one y value since GSAP overwrites any CSS transform.
+        const baseOffset = -(track.scrollHeight - columnEl.clientHeight) / 2;
+
+        const from = column.direction === 'down' ? baseOffset - travel / 2 : baseOffset + travel / 2;
+        const to = column.direction === 'down' ? baseOffset + travel / 2 : baseOffset - travel / 2;
 
         gsap.fromTo(
-          el,
+          track,
+          { y: from },
           {
-            y: (item.travel ?? 900) / 2,
-          },
-          {
-            y: -(item.travel ?? 900) / 2,
+            y: to,
             ease: 'none',
             scrollTrigger: {
               trigger: containerRef.current,
@@ -127,70 +127,44 @@ export default function ParallaxCollage({
     }, containerRef);
 
     return () => ctx.revert();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMobile, items]);
+  }, [activeColumns, travel]);
 
-  const back = resolved.filter(x => x.layer === 'back');
-  const front = resolved.filter(x => x.layer === 'front');
+  const setColumnRef = (id: string | number) => (el: HTMLDivElement | null) => {
+    if (el) columnRefs.current.set(id, el);
+    else columnRefs.current.delete(id);
+  };
 
-  const setCardRef = (id: string | number) => (el: HTMLDivElement | null) => {
-    if (el) cardRefs.current.set(id, el);
-    else cardRefs.current.delete(id);
+  const setTrackRef = (id: string | number) => (el: HTMLDivElement | null) => {
+    if (el) trackRefs.current.set(id, el);
+    else trackRefs.current.delete(id);
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={`${styles.collage} ${className}`}
-    >
-
+    <div ref={containerRef} className={`${styles.collage} ${className}`}>
       <div className={styles.stage}>
-
-        <div className={styles.backLayer}>
-          {back.map(item => (
-            <div
-              key={item.id}
-              ref={setCardRef(item.id)}
-              className={styles.card}
-              style={{
-                bottom: item.bottom,
-                left: item.left,
-                right: item.right,
-                width: item.width,
-              }}
-            >
-              <CollageMedia item={item} />
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.frontLayer}>
-          {front.map(item => (
-            <div
-              key={item.id}
-              ref={setCardRef(item.id)}
-              className={`${styles.card} ${styles.frontCard}`}
-              style={{
-                bottom: item.bottom,
-                left: item.left,
-                right: item.right,
-                width: item.width,
-              }}
-            >
-              <CollageMedia item={item} />
+        <div className={styles.columns}>
+          {activeColumns.map(column => (
+            <div key={column.id} ref={setColumnRef(column.id)} className={styles.column}>
+              <div ref={setTrackRef(column.id)} className={styles.track}>
+                {[...column.images, ...column.images].map((image, i) => (
+                  <div key={i} className={styles.thumb}>
+                    <ColumnMedia image={image} />
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
 
         <div className={styles.text}>
-          <div className={styles.title}>
-            {text}
+          <div className={styles.glass}>
+            <p className={styles.paragraph}>{text}</p>
+            {text2 && <p className={styles.paragraph}>{text2}</p>}
+            {text3 && <p className={styles.paragraph}>{text3}</p>}
           </div>
         </div>
-
       </div>
-
     </div>
   );
 }
