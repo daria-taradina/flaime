@@ -24,7 +24,7 @@ export const ABOUT_INTRO = {
   cards: [
     {
       id: 1,
-      src: '#F5745D',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/d-9_jrekkm.jpg',
       layer: 'front',
       x: 200,
       y: 620,
@@ -34,7 +34,7 @@ export const ABOUT_INTRO = {
     },
     {
       id: 2,
-      src: '#5DEBF5',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/6db9025c_nano_2K_f9vofx.jpg',
       layer: 'front',
       x: 1040,
       y: 40,
@@ -44,7 +44,7 @@ export const ABOUT_INTRO = {
     },
     {
       id: 3,
-      src: '#E35DF5',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229102/d-10_geiek8.jpg',
       layer: 'back',
       x: 80,
       y: 220,
@@ -54,7 +54,7 @@ export const ABOUT_INTRO = {
     },
     {
       id: 4,
-      src: '#80F55D',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228733/hf_20260403_215802_26dda678-2f90-4fe0-b5d7-39a55f0f377b_1_jgsrxl.png',
       layer: 'back',
       x: 1200,
       y: 380,
@@ -64,7 +64,7 @@ export const ABOUT_INTRO = {
     },
     {
       id: 5,
-      src: '#5D6AF5',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228731/4f_feyshi.png',
       layer: 'back',
       x: 300,
       y: 5,
@@ -74,7 +74,7 @@ export const ABOUT_INTRO = {
     },
     {
       id: 6,
-      src: '#F5F05D',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781228730/f-2_uvhneb.jpg',
       layer: 'front',
       x: 450,
       y: 900,
@@ -84,7 +84,7 @@ export const ABOUT_INTRO = {
     },
     {
       id: 8,
-      src: '#f55dcf',
+      src: 'https://res.cloudinary.com/dgad4xyuc/image/upload/v1781229106/a06b97ea_nano_2K_xy3svv.jpg',
       layer: 'front',
       x: 1000,
       y: 650,
