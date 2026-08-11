@@ -21,6 +21,15 @@
   justify-content: center;
 }
 
+.canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(var(--canvas-scale, 1));
+  transform-origin: center center;
+}
+
 .backLayer,
 .frontLayer {
   position: absolute;
@@ -35,25 +44,6 @@
   z-index: 10;
 }
 
-.text {
-  position: absolute;
-  inset: 0;
-
-  display: grid;
-  place-items: center;
-
-  z-index: 20; /* always above both image layers */
-
-  pointer-events: none;
-}
-
-.title {
-  composes: h3 from global;
-  text-align: center;
-  width: min(90vw, 700px);
-  margin-inline: auto;
-}
-
 .card {
   position: absolute;
 
@@ -61,15 +51,13 @@
 
   overflow: hidden;
 
-  max-width: 23.3vmax;
-
   will-change: transform;
 }
 
 .frontCard {
   box-shadow:
-    0 40px 80px rgba(0,0,0,.25),
-    0 15px 30px rgba(0,0,0,.2);
+    0 40px 80px rgba(0, 0, 0, .25),
+    0 15px 30px rgba(0, 0, 0, .2);
 }
 
 .media {
@@ -82,22 +70,72 @@
   object-fit: cover;
 }
 
-@media (max-width: 767px) {
 
+/* Text — glass card, always above both image layers, unaffected by canvas scale */
+
+.text {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  z-index: 20;
+
+  pointer-events: none;
+}
+
+.glass {
+  position: relative;
+  pointer-events: auto;
+
+  display: grid; /* stacks the two paragraphs in the same cell for crossfade */
+
+  width: min(90vw, 700px);
+  margin-inline: auto;
+
+  padding: var(--space-lg);
+  box-sizing: border-box;
+
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(28px);
+
+  
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+}
+
+.paragraph {
+  composes: h3 from global;
+  text-align: center;
+
+  grid-area: 1 / 1;
+
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.paragraphActive {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+@media (max-width: 767px) {
   .stage {
     max-width: none;
   }
 
-  .card {
-    max-width: 46vw; /* vmax on portrait screens reads off height — too big */
-  }
-
-  .title {
+  .glass {
     width: min(88vw, 480px);
+    padding: var(--space-md);
   }
 
   .collage {
-    height: 220vh; /* tune per how much scroll room the mobile layout needs */
+    height: 220vh;
   }
-
 }

@@ -8,10 +8,7 @@ export default function AboutIntro() {
   return (
     <Section theme="dark" grid={false} padY={false}>
       <FadeIn>
-        <ParallaxCollage
-          items={ABOUT_INTRO.cards}
-          text={ABOUT_INTRO.text}
-        />
+        <ParallaxCollage items={ABOUT_INTRO.cards} text={ABOUT_INTRO.text} text2={ABOUT_INTRO.text2} />
       </FadeIn>
     </Section>
   );
