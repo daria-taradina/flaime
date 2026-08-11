@@ -30,7 +30,7 @@ export const ABOUT_INTRO = {
       y: 620,
       width: 340,
       travel: 600,
-      mobile: { x: 10, y: 520, width: 160, travel: 500 },
+      mobile: { x: 10, y: 820, width: 160, travel: 500 },
     },
     {
       id: 2,
@@ -50,7 +50,7 @@ export const ABOUT_INTRO = {
       y: 220,
       width: 300,
       travel: 400,
-      mobile: { x: 60, y: 160, width: 130, travel: 420 },
+      mobile: { x: 60, y: -100, width: 130, travel: 420 },
     },
     {
       id: 4,
@@ -60,7 +60,7 @@ export const ABOUT_INTRO = {
       y: 380,
       width: 320,
       travel: 600,
-      mobile: { x: 240, y: 300, width: 150, travel: 800 },
+      mobile: { x: 200, y: 350, width: 150, travel: 700 },
     },
     {
       id: 5,
@@ -70,7 +70,7 @@ export const ABOUT_INTRO = {
       y: 5,
       width: 280,
       travel: 550,
-      mobile: { x: 20, y: 400, width: 120, travel: 600 },
+      mobile: { x: 20, y: 300, width: 120, travel: 600 },
     },
     {
       id: 6,
@@ -80,7 +80,7 @@ export const ABOUT_INTRO = {
       y: 900,
       width: 370,
       travel: 600,
-      mobile: { x: 150, y: 600, width: 110, travel: 650 },
+      mobile: { x: 120, y: 500, width: 110, travel: 650 },
     },
     {
       id: 8,
@@ -90,7 +90,7 @@ export const ABOUT_INTRO = {
       y: 650,
       width: 280,
       travel: 500,
-      mobile: { x: 240, y: 560, width: 150, travel: 650 },
+      mobile: { x: 240, y: 860, width: 150, travel: 650 },
     },
   ] satisfies ParallaxCollageItem[],
 };
