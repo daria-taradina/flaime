@@ -14,10 +14,17 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+const MOBILE_QUERY = '(max-width: 767px)';
+
 interface Props {
   items: ParallaxCollageItem[];
   text: React.ReactNode;
   className?: string;
+}
+
+function resolveItem(item: ParallaxCollageItem, isMobile: boolean): ParallaxCollageItem {
+  if (!isMobile || !item.mobile) return item;
+  return { ...item, ...item.mobile };
 }
 
 function CollageMedia({ item }: { item: ParallaxCollageItem }) {
@@ -70,7 +77,21 @@ export default function ParallaxCollage({
 }: Props) {
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const refs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<Map<string | number, HTMLDivElement>>(new Map());
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    const mql = window.matchMedia(MOBILE_QUERY);
+    setIsMobile(mql.matches);
+
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', onChange);
+
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
+
+  const resolved = items.map(item => resolveItem(item, isMobile));
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
@@ -81,10 +102,9 @@ export default function ParallaxCollage({
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      refs.current.forEach((el, index) => {
+      resolved.forEach(item => {
+        const el = cardRefs.current.get(item.id);
         if (!el) return;
-
-        const item = items[index];
 
         gsap.fromTo(
           el,
@@ -99,6 +119,7 @@ export default function ParallaxCollage({
               start: 'top top',
               end: 'bottom bottom',
               scrub: true,
+              invalidateOnRefresh: true,
             },
           }
         );
@@ -107,13 +128,16 @@ export default function ParallaxCollage({
 
     return () => ctx.revert();
 
-  }, [items]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile, items]);
 
+  const back = resolved.filter(x => x.layer === 'back');
+  const front = resolved.filter(x => x.layer === 'front');
 
-  const back = items.filter(x => x.layer === 'back');
-  const front = items.filter(x => x.layer === 'front');
-
-  let refIndex = 0;
+  const setCardRef = (id: string | number) => (el: HTMLDivElement | null) => {
+    if (el) cardRefs.current.set(id, el);
+    else cardRefs.current.delete(id);
+  };
 
   return (
     <div
@@ -124,29 +148,40 @@ export default function ParallaxCollage({
       <div className={styles.stage}>
 
         <div className={styles.backLayer}>
-          {back.map(item => {
-            const index = refIndex++;
-
-            return (
-              <div
-                key={item.id}
-                ref={el => {
-                  refs.current[index] = el;
-                }}
-                className={styles.card}
-                style={{
-                  bottom: item.bottom,
-                  left: item.left,
-                  right: item.right,
-                  width: item.width,
-                }}
-              >
-                <CollageMedia item={item}/>
-              </div>
-            );
-          })}
+          {back.map(item => (
+            <div
+              key={item.id}
+              ref={setCardRef(item.id)}
+              className={styles.card}
+              style={{
+                bottom: item.bottom,
+                left: item.left,
+                right: item.right,
+                width: item.width,
+              }}
+            >
+              <CollageMedia item={item} />
+            </div>
+          ))}
         </div>
 
+        <div className={styles.frontLayer}>
+          {front.map(item => (
+            <div
+              key={item.id}
+              ref={setCardRef(item.id)}
+              className={`${styles.card} ${styles.frontCard}`}
+              style={{
+                bottom: item.bottom,
+                left: item.left,
+                right: item.right,
+                width: item.width,
+              }}
+            >
+              <CollageMedia item={item} />
+            </div>
+          ))}
+        </div>
 
         <div className={styles.text}>
           <div className={styles.title}>
@@ -154,39 +189,6 @@ export default function ParallaxCollage({
           </div>
         </div>
 
-
-        <div className={styles.frontLayer}>
-          {front.map(item => {
-            const index = refIndex++;
-
-            return (
-              <div
-                key={item.id}
-                ref={el => {
-                  refs.current[index] = el;
-                }}
-                className={`${styles.card} ${styles.frontCard}`}
-                style={{
-                  bottom: item.bottom,
-                  left: item.left,
-                  right: item.right,
-                  width: item.width,
-                }}
-              >
-                <CollageMedia item={item}/>
-              </div>
-            );
-          })}
-        </div>
-
-      </div>
-
-      <div className={styles.mobileGrid}>
-        {items.map(item => (
-          <div key={item.id} className={styles.mobileCard}>
-            <CollageMedia item={item}/>
-          </div>
-        ))}
       </div>
 
     </div>

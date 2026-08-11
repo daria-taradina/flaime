@@ -1,0 +1,7 @@
+/* components/case-study/blocks/Masonry.module.css */
+
+.masonry {
+  width: min(100%, var(--grid-max-width));
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+}

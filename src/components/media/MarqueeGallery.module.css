@@ -1,0 +1,42 @@
+/* components/media/MarqueeGallery.module.css */
+
+.viewport {
+  --marquee-height: 22rem;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-sm);
+
+  height: var(--marquee-height);
+  width: max-content;
+
+  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+}
+
+@media (hover: hover) {
+  .viewport:hover .track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 1024px) {
+  .viewport {
+    --marquee-height: 14rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
