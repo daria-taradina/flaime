@@ -1,6 +1,7 @@
 // data/about.ts
 
 import type { ParallaxCollageItem } from '@/components/media/ParallaxCollage.types';
+import { cloudinaryUrl } from '@/utils/constants';
 
 export const ABOUT_INTRO = {
   text:
@@ -111,4 +112,17 @@ export const ABOUT_INTRO = {
     },
 
   ] satisfies ParallaxCollageItem[],
+};
+
+export const ABOUT_MARGO = {
+  name: 'Margo',
+  role: 'founder of Flaime Studio',
+  paragraphs: [
+    "I'm a graphic designer, and over the past few years I've completed more than 200 projects across beauty, wellness, fashion, and lifestyle brands. Working with so many businesses taught me that great creative work doesn't start with colors, typography, or beautiful images. It starts with understanding what a brand wants people to feel the moment they come across it.",
+    'That idea eventually became Flaime Studio.',
+    "Today I work with brands that care about how they're perceived and understand that every interaction shapes that perception. My role is to help turn ideas into something people can experience, whether they're visiting a website, discovering a product for the first time, or deciding whether your brand is the one they want to come back to.",
+    'Every project is built around one question:\nWhat should someone feel the moment they discover your brand?',
+  ],
+  image: cloudinaryUrl('image', 'margo_ho6ogk', 'f_auto,q_auto,w_1400'),
+  imageAlt: 'Margo, founder of Flaime Studio',
 };
